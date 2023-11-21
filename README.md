@@ -2,6 +2,6 @@
 
 Projeto POAO - ""
 
-Realizado por:\n
-Tiago Nuno Matos Cabo Lopes de Almeida - 2021221615\n
+Realizado por:
+Tiago Nuno Matos Cabo Lopes de Almeida - 2021221615
 João Tomás Grangeia Querido - 2021240660
