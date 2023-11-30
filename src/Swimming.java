@@ -1,3 +1,3 @@
-public class Swimming {
+public class Swimming extends Sports{
     
 }

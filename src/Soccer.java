@@ -1,3 +1,3 @@
-public class Soccer {
+public class Soccer extends Sports{
     
 }
