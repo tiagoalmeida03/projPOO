@@ -1,3 +1,3 @@
-public class Arts {
+public class Arts extends Topics{
     
 }

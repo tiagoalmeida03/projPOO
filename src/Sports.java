@@ -1,3 +1,3 @@
-public class Sports {
+public class Sports extends Topics{
     
 }
