@@ -1,0 +1,82 @@
+# Artes
+1. Quem pintou a "Mona Lisa"?
+   - Opções:
+     a) Pablo Picasso
+     b) Vincent van Gogh
+     c) Leonardo da Vinci
+     d) Michelangelo
+     e) Claude Monet
+   - Sublista (caso seja antes da 3ª pergunta):
+     a) Pablo Picasso
+     b) Vincent van Gogh
+     c) Leonardo da Vinci
+   - Resposta correta: c
+
+2. Qual é o movimento artístico conhecido por suas formas geométricas e cores vibrantes?
+   - Opções:
+     a) Renascimento
+     b) Cubismo
+     c) Barroco
+     d) Impressionismo
+     e) Romantismo
+   - Sublista (caso seja antes da 3ª pergunta):
+     a) Renascimento
+     b) Cubismo
+     c) Barroco
+   - Resposta correta: b
+
+# Desporto
+## Futebol
+3. Quem é conhecido como "O Fenômeno"?
+   - Jogadores:
+     a) Lionel Messi
+     b) Cristiano Ronaldo
+     c) Neymar
+     d) Ronaldo Nazário
+     e) Zinedine Zidane
+   - Camisolas:
+     a) Camisola 10
+     b) Camisola 7
+     c) Camisola 11
+     d) Camisola 9
+     e) Camisola 5
+   - Respostas:
+     a) Ronaldo Nazário
+     b) Camisola 9
+
+4. Verdadeiro ou falso: O slalom gigante é uma disciplina de ski alpino que envolve um percurso com mais portões e curvas do que o slalom regular.
+   - Resposta correta: Verdadeiro
+
+5. Verdadeiro ou falso: Na natação, o estilo borboleta é caracterizado por um movimento simultâneo de ambos os braços, onde as pernas realizam um movimento ondulante.
+   - Resposta correta: Verdadeiro
+
+# Ciências
+6. Qual é a unidade de medida de corrente elétrica?
+   - Opções fáceis:
+     a) Volts
+     b) Ampères
+     c) Ohms
+     d) Watts
+     e) Joules
+   - Opções difíceis:
+     a) Ohms
+     b) Ampères
+     c) Joules
+     d) Coulombs
+     e) Farads
+   - Resposta correta: b
+
+7. Qual destes cientistas é conhecido por suas contribuições à teoria quântica?
+   - Opções fáceis:
+     a) Isaac Newton
+     b) Albert Einstein
+     c) Marie Curie
+     d) Niels Bohr
+     e) Galileu Galilei
+   - Opções difíceis:
+     a) Marie Curie
+     b) Max Planck
+     c) Galileu Galilei
+     d) Niels Bohr
+     e) Werner Heisenberg
+   - Resposta correta: d
