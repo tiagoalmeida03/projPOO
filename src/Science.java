@@ -1,3 +1,3 @@
-public class Science extends Topics{
+public class Science extends Questions{
     
 }
