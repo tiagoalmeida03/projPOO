@@ -23,6 +23,10 @@ public class GameResult implements Comparable<GameResult> {
         return player;
     }
 
+    public int getScore() {
+        return player.getScore();
+    }
+
     public List<String> getCorrectAnswers() {
         return correctAnswers;
     }

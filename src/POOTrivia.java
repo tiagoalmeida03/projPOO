@@ -118,7 +118,7 @@ public class POOTrivia extends JPanel {
         leaderboard.append("Leaderboard:\n");
         for (int i = 0; i < Math.min(gameResults.size(), 3); i++) {
             GameResult gameResult = gameResults.get(i);
-            leaderboard.append(i + 1).append(". ").append(gameResult.getPlayerName()).append(": ").append(gameResult.getScore()).append("\n");
+            leaderboard.append(i + 1).append(". ").append(gameResult.getPlayer().getPlayerName()).append(": ").append(gameResult.getScore()).append("\n");
         }
         JOptionPane.showMessageDialog(null, leaderboard.toString(), "Leaderboard", JOptionPane.INFORMATION_MESSAGE);
     }

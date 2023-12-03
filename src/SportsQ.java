@@ -6,7 +6,7 @@ public class SportsQ extends Questions {
     }
 
     @Override
-    public boolean isCorrect(String answer) {
+    public boolean isCorrectAnswer(String answer) {
         return answer.equals(correctAnswer);
     }
 }

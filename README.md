@@ -1,6 +1,6 @@
 # projPOO
 
-Projeto POAO - ""
+Projeto POAO - "POAOTrivia"
 
 Realizado por:
 Tiago Nuno Matos Cabo Lopes de Almeida - 2021221615

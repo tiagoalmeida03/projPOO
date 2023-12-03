@@ -19,5 +19,5 @@ public abstract class Questions {
         return options;
     }
 
-    public abstract boolean isCorrect(String answer);
+    public abstract boolean isCorrectAnswer(String answer);
 }

@@ -1,14 +1,8 @@
 import java.util.List;
 
 public class ArtsQ extends Questions {
-    private String text;
-    private List<String> options;
-    private String correctAnswer;
-
     public ArtsQ(String text, List<String> options, String correctAnswer) {
-        this.text = text;
-        this.options = options;
-        this.correctAnswer = correctAnswer;
+        super(text, options, correctAnswer);
     }
 
     @Override

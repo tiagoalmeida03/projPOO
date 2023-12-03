@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="084d4a95-98c5-4b4f-94a7-58f2659d0738" name="Changes" comment="" />
+    <list default="true" id="084d4a95-98c5-4b4f-94a7-58f2659d0738" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ArtsQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArtsQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Questions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScienceQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScienceQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SkiQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SkiQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SoccerQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SoccerQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SportsQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SportsQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SwimmingQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SwimmingQ.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +27,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2YXZL0in4Oyc3MUyvyBDU93cOVK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,7 +39,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/tiagoalmeida/Library/CloudStorage/OneDrive-UniversidadedeCoimbra/UC/3º ANO/1º Semestre/POAO/projPOO"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
