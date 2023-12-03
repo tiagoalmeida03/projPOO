@@ -20,4 +20,6 @@ public abstract class Questions {
     }
 
     public abstract boolean isCorrectAnswer(String answer);
+
+    public abstract List<String> getSublistOptions();
 }

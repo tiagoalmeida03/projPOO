@@ -15,32 +15,15 @@ public class POOTrivia extends JPanel {
     private JLabel questionLabel;
     private JLabel scoreLabel;
 
+    private int questionsPerGame = 5;
+    private int currentQuestionCount;
+    private List<Integer> usedQuestionsIndices;
+
     public POOTrivia() {
-        // Load questions from the file
-        loadQuestions();
+        // ... (existing code)
 
-        // Load previous game results
-        loadGameResults();
-
-        currentQuestionIndex = 0;
-        currentGameScore = 0;
-
-        // Initialize GUI components
-        questionLabel = new JLabel();
-        scoreLabel = new JLabel();
-        answerButtons = new JButton[4];
-        for (int i = 0; i < answerButtons.length; i++) {
-            answerButtons[i] = new JButton();
-            answerButtons[i].addActionListener(new AnswerButtonListener());
-        }
-
-        // Add GUI components to the panel
-        setLayout(new GridLayout(6, 1));
-        add(questionLabel);
-        for (JButton button : answerButtons) {
-            add(button);
-        }
-        add(scoreLabel);
+        currentQuestionCount = 0;
+        usedQuestionsIndices = new ArrayList<>();
 
         // Start a new game
         startNewGame();
@@ -130,21 +113,34 @@ public class POOTrivia extends JPanel {
     private void startNewGame() {
         currentQuestionIndex = 0;
         currentGameScore = 0;
+        currentQuestionCount = 0;
+        usedQuestionsIndices.clear();
+
         Collections.shuffle(questions); // Shuffle questions for each new game
         displayNextQuestion();
     }
 
     private void displayNextQuestion() {
-        if (currentQuestionIndex < questions.size()) {
-            Questions question = questions.get(currentQuestionIndex);
+        if (currentQuestionCount < questionsPerGame) {
+            int questionIndex = getNextRandomQuestionIndex();
+            Questions question = questions.get(questionIndex);
             questionLabel.setText(question.getQuestion());
 
-            List<String> answers = question.getAnswers();
+            List<String> answers;
+
+            if (currentQuestionCount < 3 && question instanceof ArtsQ) {
+                // Display a sublist with only 3 options for Arts questions before the 3rd question
+                answers = ((ArtsQ) question).getSublistOptions();
+            } else {
+                // Display the full list of options for other questions
+                answers = question.getAnswers();
+            }
+
             for (int i = 0; i < answerButtons.length; i++) {
                 answerButtons[i].setText(answers.get(i));
             }
 
-            currentQuestionIndex++;
+            currentQuestionCount++;
         } else {
             endGame();
         }
@@ -158,8 +154,12 @@ public class POOTrivia extends JPanel {
             currentGameScore++;
         }
 
-        // Display the next question
-        displayNextQuestion();
+        // Display the next question or end the game
+        if (currentQuestionIndex < questions.size()) {
+            displayNextQuestion();
+        } else {
+            endGame();
+        }
     }
 
     private void endGame() {
@@ -179,12 +179,33 @@ public class POOTrivia extends JPanel {
         showLeaderboard();
     }
 
-    private class AnswerButtonListener implements ActionListener {
+    private int getNextRandomQuestionIndex() {
+        int randomIndex;
+        do {
+            randomIndex = new Random().nextInt(questions.size());
+        } while (usedQuestionsIndices.contains(randomIndex));
+
+        usedQuestionsIndices.add(randomIndex);
+        return randomIndex;
+    }
+
+    private class answerButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
             String selectedAnswer = button.getText();
             handleAnswerSubmission(selectedAnswer);
         }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("POO Trivia Game");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().add(new POOTrivia());
+            frame.setSize(400, 300);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 }
