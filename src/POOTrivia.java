@@ -44,7 +44,7 @@ public class POOTrivia extends JPanel {
     }
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
-    
+
         try {
             File file = new File("pootrivia.txt");
             Scanner scanner = new Scanner(file);
@@ -54,7 +54,7 @@ public class POOTrivia extends JPanel {
                 scanner.close(); // Close the scanner
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 if (line.endsWith("*")) {
@@ -62,41 +62,41 @@ public class POOTrivia extends JPanel {
                     List<Object> questionData = new ArrayList<>();
                     questionData.add(line);
                     questionData.add(scanner.nextLine().trim()); // Right Answer
-    
+
                     rawQuestions.add(questionData);
                 }
             }
-    
+
             scanner.close();
-    
+
             // Convert raw data to Questions objects
             questions = new ArrayList<>();
             for (List<Object> questionData : rawQuestions) {
                 String questionText = (String) questionData.get(0);
                 String correctAnswer = (String) questionData.get(1);
-    
+
                 // Create the appropriate Questions subclass based on type
                 Questions question = new ArtsQ(questionText, null, correctAnswer); // Adjust parameters accordingly
-    
+
                 questions.add(question);
             }
-    
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void loadGameResults() {
         gameResults = new ArrayList<>();
-    
+
         try {
             File file = new File("game_results.obj");
-    
+
             if (!file.exists()) {
                 System.err.println("Error: File 'game_results.obj' not found.");
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 Object obj = objectInputStream.readObject();
                 if (obj instanceof List<?>) {
@@ -116,21 +116,21 @@ public class POOTrivia extends JPanel {
                     System.err.println("Error: Unexpected object type in 'game_results.obj'.");
                 }
             }
-    
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void saveGameResult(GameResult gameResult) {
         try {
             File file = new File("game_results.obj");
-    
+
             if (!file.exists()) {
                 System.err.println("Error: File 'game_results.obj' not found.");
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 Object obj = objectInputStream.readObject();
                 if (obj instanceof List<?>) {
@@ -150,15 +150,15 @@ public class POOTrivia extends JPanel {
                     System.err.println("Error: Unexpected object type in 'game_results.obj'.");
                 }
             }
-    
+
             // Add the new game result
             gameResults.add(gameResult);
-    
+
             // Save the updated list of game results
             try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
                 objectOutputStream.writeObject(gameResults);
             }
-    
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -167,10 +167,10 @@ public class POOTrivia extends JPanel {
     private void showLeaderboard(int numberOfTopScores) {
         // Retrieve the game results from the list
         List<GameResult> gameResults = getGameResults();
-    
+
         // Sort the game results based on the scores
         Collections.sort(gameResults, Comparator.comparingInt(GameResult::getScore).reversed());
-    
+
         // Display the leaderboard with player names and scores
         StringBuilder leaderboard = new StringBuilder();
         leaderboard.append("Leaderboard:\n");
@@ -180,7 +180,7 @@ public class POOTrivia extends JPanel {
         }
         JOptionPane.showMessageDialog(null, leaderboard.toString(), "Leaderboard", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
 
     private List<GameResult> getGameResults() {
         return gameResults;
