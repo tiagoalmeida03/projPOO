@@ -42,83 +42,145 @@ public class POOTrivia extends JPanel {
         }
         add(scoreLabel);
     }
-
     private void loadQuestions() {
-        questions = new ArrayList<>();
-
+        List<List<Object>> rawQuestions = new ArrayList<>();
+    
         try {
-            File file = new File("teste.txt");
+            File file = new File("pootrivia.txt");
             Scanner scanner = new Scanner(file);
 
+            if (!file.exists()) {
+                System.err.println("Error: File 'pootrivia.txt' not found.");
+                scanner.close(); // Close the scanner
+                return; // Exit the method if the file doesn't exist
+            }
+    
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] parts = line.split(";");
-
-                String questionText = parts[0];
-                List<String> answers = Arrays.asList(parts[1].split(","));
-                String correctAnswer = parts[2];
-
-                Questions question = new ArtsQ(questionText, answers, correctAnswer); // Example using ArtsQ, adjust as needed
+                if (line.endsWith("*")) {
+                    line = line.substring(0, line.length() - 1); // Remove the * at the end
+                    List<Object> questionData = new ArrayList<>();
+                    questionData.add(line);
+                    questionData.add(scanner.nextLine().trim()); // Right Answer
+    
+                    rawQuestions.add(questionData);
+                }
+            }
+    
+            scanner.close();
+    
+            // Convert raw data to Questions objects
+            questions = new ArrayList<>();
+            for (List<Object> questionData : rawQuestions) {
+                String questionText = (String) questionData.get(0);
+                String correctAnswer = (String) questionData.get(1);
+    
+                // Create the appropriate Questions subclass based on type
+                Questions question = new ArtsQ(questionText, null, correctAnswer); // Adjust parameters accordingly
+    
                 questions.add(question);
             }
-
-            scanner.close();
+    
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-
+    
     private void loadGameResults() {
         gameResults = new ArrayList<>();
-
+    
         try {
             File file = new File("game_results.obj");
-            if (file.exists()) {
-                FileInputStream fileInputStream = new FileInputStream(file);
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-                gameResults = (List<GameResult>) objectInputStream.readObject();
-
-                objectInputStream.close();
-                fileInputStream.close();
+    
+            if (!file.exists()) {
+                System.err.println("Error: File 'game_results.obj' not found.");
+                return; // Exit the method if the file doesn't exist
             }
+    
+            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
+                Object obj = objectInputStream.readObject();
+                if (obj instanceof List<?>) {
+                    List<?> rawList = (List<?>) obj;
+
+                    // Check if the elements in the list are of type GameResult
+                    if (!rawList.isEmpty() && rawList.get(0) instanceof GameResult) {
+                        List<GameResult> gameResults = new ArrayList<>();
+                        for (Object element : rawList) {
+                            gameResults.add((GameResult) element);
+                        }
+                        this.gameResults = gameResults;
+                    } else {
+                        System.err.println("Error: Unexpected element type in 'game_results.obj'.");
+                    }
+                } else {
+                    System.err.println("Error: Unexpected object type in 'game_results.obj'.");
+                }
+            }
+    
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void saveGameResult(GameResult gameResult) {
+        try {
+            File file = new File("game_results.obj");
+    
+            if (!file.exists()) {
+                System.err.println("Error: File 'game_results.obj' not found.");
+                return; // Exit the method if the file doesn't exist
+            }
+    
+            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
+                Object obj = objectInputStream.readObject();
+                if (obj instanceof List<?>) {
+                    List<?> rawList = (List<?>) obj;
+
+                    // Check if the elements in the list are of type GameResult
+                    if (!rawList.isEmpty() && rawList.get(0) instanceof GameResult) {
+                        List<GameResult> gameResults = new ArrayList<>();
+                        for (Object element : rawList) {
+                            gameResults.add((GameResult) element);
+                        }
+                        this.gameResults = gameResults;
+                    } else {
+                        System.err.println("Error: Unexpected element type in 'game_results.obj'.");
+                    }
+                } else {
+                    System.err.println("Error: Unexpected object type in 'game_results.obj'.");
+                }
+            }
+    
+            // Add the new game result
+            gameResults.add(gameResult);
+    
+            // Save the updated list of game results
+            try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
+                objectOutputStream.writeObject(gameResults);
+            }
+    
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private void saveGameResult(GameResult gameResult) {
-        try {
-            File file = new File("game_results.obj");
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            gameResults.add(gameResult);
-            objectOutputStream.writeObject(gameResults);
-
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showLeaderboard() {
+    private void showLeaderboard(int numberOfTopScores) {
         // Retrieve the game results from the list
         List<GameResult> gameResults = getGameResults();
-
+    
         // Sort the game results based on the scores
         Collections.sort(gameResults, Comparator.comparingInt(GameResult::getScore).reversed());
-
+    
         // Display the leaderboard with player names and scores
         StringBuilder leaderboard = new StringBuilder();
         leaderboard.append("Leaderboard:\n");
-        for (int i = 0; i < Math.min(gameResults.size(), 3); i++) {
+        for (int i = 0; i < Math.min(gameResults.size(), numberOfTopScores); i++) {
             GameResult gameResult = gameResults.get(i);
             leaderboard.append(i + 1).append(". ").append(gameResult.getPlayer().getPlayerName()).append(": ").append(gameResult.getScore()).append("\n");
         }
         JOptionPane.showMessageDialog(null, leaderboard.toString(), "Leaderboard", JOptionPane.INFORMATION_MESSAGE);
     }
+    
 
     private List<GameResult> getGameResults() {
         return gameResults;
@@ -177,7 +239,7 @@ public class POOTrivia extends JPanel {
         saveGameResult(gameResult);
 
         // Show leaderboard
-        showLeaderboard();
+        showLeaderboard(3);
     }
 
     private class AnswerButtonListener implements ActionListener {
@@ -190,13 +252,11 @@ public class POOTrivia extends JPanel {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("POO Trivia Game");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(new POOTrivia());
-            frame.setSize(400, 300);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
+        JFrame frame = new JFrame("POO Trivia");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        frame.setLocationRelativeTo(null);
+        frame.add(new POOTrivia());
+        frame.setVisible(true);
     }
 }
