@@ -1,59 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c9b42e4-9ed2-4171-ba40-b72f4a9e84d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ProjetoPOO2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/projPOO.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enunciado_Projeto.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/ObjectFilesFolder/pootrivia_jogo_20231202182910_DV.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/ObjectFilesFolder/pootrivia_jogo_20231202183110_JR.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/POOTriviaV3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/GameData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/GameGUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/GameGUI$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/GameGUI$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/GameGUI$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/GameGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/ParserPergunta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/Pergunta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PerguntaArte.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PerguntaCiencia.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PerguntaDesporto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PerguntaFutebol.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PerguntaNatacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PerguntaSki.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/PlayerObjectFileTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/out/production/POOTriviaV3/Teste.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/GameData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/GameGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/ParserPergunta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/Pergunta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PerguntaArte.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PerguntaCiencia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PerguntaDesporto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PerguntaFutebol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PerguntaNatacao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PerguntaSki.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/PlayerObjectFileTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/POOTriviaV3/src/Teste.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UML.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_results.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/POOTrivia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/POOTrivia.java" afterDir="false" />
-    </list>
+    <list default="true" id="7c9b42e4-9ed2-4171-ba40-b72f4a9e84d2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +21,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -100,6 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701705318828</updated>
       <workItem from="1701705321702" duration="62000" />
+      <workItem from="1701705409241" duration="421000" />
     </task>
     <servers />
   </component>
