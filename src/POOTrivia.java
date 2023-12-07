@@ -16,14 +16,14 @@ public class POOTrivia extends JPanel {
     private JLabel scoreLabel;
 
     public POOTrivia() {
-        // Start a new game
-        startNewGame();
-
         // Load questions from the file
         loadQuestions();
 
+        // Start a new game
+        startNewGame();
+
         // Load previous game results
-        loadGameResults();
+        //loadGameResults();
 
         // Initialize GUI components
         questionLabel = new JLabel();
@@ -42,9 +42,10 @@ public class POOTrivia extends JPanel {
         }
         add(scoreLabel);
     }
+
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
-    
+
         try {
             File file = new File("pootrivia.txt");
             Scanner scanner = new Scanner(file);
@@ -54,36 +55,68 @@ public class POOTrivia extends JPanel {
                 scanner.close(); // Close the scanner
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 if (line.endsWith("*")) {
                     line = line.substring(0, line.length() - 1); // Remove the * at the end
                     List<Object> questionData = new ArrayList<>();
                     questionData.add(line);
+
+                    // Read options
+                    List<String> options = new ArrayList<>();
+                    for (int i = 0; i < 4; i++) {
+                        options.add(scanner.nextLine().trim());
+                    }
+                    questionData.add(options);
+
+                    // Read correct answer
                     questionData.add(scanner.nextLine().trim()); // Right Answer
-    
+
                     rawQuestions.add(questionData);
                 }
             }
-    
+
             scanner.close();
-    
+
             // Convert raw data to Questions objects
             questions = new ArrayList<>();
             for (List<Object> questionData : rawQuestions) {
                 String questionText = (String) questionData.get(0);
-                String correctAnswer = (String) questionData.get(1);
-    
+                List<String> questionOptions = (List<String>) questionData.get(1);
+                String correctAnswer = (String) questionData.get(2);
+
                 // Create the appropriate Questions subclass based on type
-                Questions question = new ArtsQ(questionText, null, correctAnswer); // Adjust parameters accordingly
-    
+                Questions question;
+                if (questionText.startsWith("Arts")) {
+                    question = new ArtsQ(questionText, questionOptions, correctAnswer);
+                } else if (questionText.startsWith("Science")) {
+                    question = new ScienceQ(questionText, questionOptions, correctAnswer);
+                } else if (questionText.startsWith("Soccer")) {
+                    question = new SoccerQ(questionText, questionOptions, correctAnswer);
+                } else if (questionText.startsWith("Ski")) {
+                    question = new SkiQ(questionText, questionOptions, correctAnswer);
+                } else if (questionText.startsWith("Swimming")) {
+                    question = new SwimmingQ(questionText, questionOptions, correctAnswer);
+                } else {
+                    // Handle other question types as needed
+                    question = new ArtsQ(questionText, questionOptions, correctAnswer);
+                }
+
                 questions.add(question);
             }
-    
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private void startNewGame() {
+        currentQuestionIndex = 0;
+        currentGameScore = 0;
+        Collections.shuffle(questions); // Shuffle questions for each new game
+        displayNextQuestion();
     }
     
     private void loadGameResults() {
@@ -184,13 +217,6 @@ public class POOTrivia extends JPanel {
 
     private List<GameResult> getGameResults() {
         return gameResults;
-    }
-
-    private void startNewGame() {
-        currentQuestionIndex = 0;
-        currentGameScore = 0;
-        Collections.shuffle(questions); // Shuffle questions for each new game
-        displayNextQuestion();
     }
 
     private void displayNextQuestion() {

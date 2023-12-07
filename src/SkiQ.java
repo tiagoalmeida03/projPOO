@@ -8,6 +8,11 @@ public class SkiQ extends SportsQ {
     }
 
     @Override
+    public List<String> getAnswers() {
+        return options;
+    }
+
+    @Override
     public boolean isCorrectAnswer(String answer) {
         return answer.equals(correctAnswer);
     }
