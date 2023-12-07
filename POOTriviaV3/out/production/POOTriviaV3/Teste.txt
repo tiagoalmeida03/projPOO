@@ -1,8 +1,0 @@
-Futebol;Qual jogador é conhecido como "CR7"?;[Pelé, Fábio Coentrão, Éder, Hulk, Cristiano Ronaldo, Lionel Messi, Neymar, Kylian Mbappé, Robert Lewandowski];[Camisola 7, Camisola 10, Camisola 11, Camisola 8, Camisola 9, Camisola 12, Camisola 04, Camisola 20, Camisola 69, Camisola 27];Cristiano Ronaldo;Camisola 7;10
-Arte;Which art movement includes works like "Starry Night" and "The Persistence of Memory"?;Surrealism;Impressionism;Cubism;Cubism;Expressionism;Baroque;Post-Impressionism;Post-Impressionism;12
-Ciencia;What is the largest planet in our solar system?;Mercury;Venus;Uranus;Pluto;Earth;Jupiter;Saturn;Mars;Titan;Kepler-20f;Jupiter;10
-Arte;Who painted the Mona Lisa?;Vincent van Gogh;Pablo Picasso;Leonardo da Vinci;Claude Monet;Edvard Munch;Michelangelo;Joana Vasconcelos;Gil Mário;Gaiola;Leonardo da Vinci;10
-Ski;Is the length of a slalom ski is 150m?;Verdadeiro;Falso;Verdadeiro;10
-Ciencia;What is the chemical symbol for gold?;Au;Ag;Pt;Br;Fe;Hg;Pb;Ne;Ca;Au;12
-Futebol;Qual jogador é conhecido como "Neymar Jr."?;[Pelé,Fábio Coentrão,Éder,Hulk,Cristiano Ronaldo, Lionel Messi, Neymar, Kylian Mbappé, Robert Lewandowski];[Camisola 7, Camisola 10, Camisola 11, Camisola 8, Camisola 9, Camisola 12, Camisola 04, Camisola 20, Camisola 69, Camisola 27];Neymar Jr.;Camisola 10;15
-Natacao;Is the butterfly stroke faster than freestyle?;Verdadeiro;Falso;Verdadeiro;10

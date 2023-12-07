@@ -23,7 +23,7 @@ public class POOTrivia extends JPanel {
         startNewGame();
 
         // Load previous game results
-        //loadGameResults();
+        loadGameResults();
 
         // Initialize GUI components
         questionLabel = new JLabel();
@@ -99,8 +99,8 @@ public class POOTrivia extends JPanel {
                 } else if (questionText.startsWith("Swimming")) {
                     question = new SwimmingQ(questionText, questionOptions, correctAnswer);
                 } else {
-                    // Handle other question types as needed
-                    question = new ArtsQ(questionText, questionOptions, correctAnswer);
+                    System.err.println("Error: Unknown question type.");
+                    continue; // Skip this question
                 }
 
                 questions.add(question);
