@@ -1,130 +1,83 @@
-Arts:
-Who painted the Mona Lisa?
-a. Vincent van Gogh
-b. Pablo Picasso
-c. Leonardo da Vinci *
-d. Michelangelo
-Which artistic movement includes works like "Starry Night" and "Sunflowers"?
-a. Surrealism
-b. Post-Impressionism *
-c. Cubism
-d. Abstract Expressionism
-Who wrote the play "Romeo and Juliet"?
-a. Charles Dickens
-b. William Shakespeare *
-c. Jane Austen
-d. F. Scott Fitzgerald
-Which sculptor created the Statue of Liberty?
-a. Auguste Rodin
-b. Michelangelo
-c. Frédéric Auguste Bartholdi *
-d. Donatello
-What art movement is known for its use of everyday objects and images, such as soup cans?
-a. Abstract Expressionism
-b. Pop Art *
-c. Dada
-d. Cubism
-Science:
-What is the chemical symbol for gold?
-a. Au *
-b. Ag
-c. Au
-d. Fe
-Who developed the theory of relativity?
-a. Isaac Newton
-b. Albert Einstein *
-c. Galileo Galilei
-d. Stephen Hawking
-What is the powerhouse of the cell?
-a. Nucleus
-b. Mitochondria *
-c. Ribosome
-d. Endoplasmic reticulum
-Which planet is known as the "Red Planet"?
-a. Venus
-b. Mars *
-c. Jupiter
-d. Mars
-What is the largest mammal on Earth?
-a. Elephant
-b. Blue Whale *
-c. Giraffe
-d. Hippopotamus
-Soccer:
-Who won the FIFA Ballon d'Or in 2022?
-a. Lionel Messi 10 *
-b. Cristiano Ronaldo 7
-c. Kylian Mbappé 7
-d. Thibaut Courtois 1
-Which player is known as "CR7"?
-a. Neymar Jr 10
-b. Cristiano Ronaldo 7 *
-c. Antoine Griezmann 7
-d. Mohamed Salah 11
-Whose the most known player from Egypt?
-a. Mohamed Salah 11 *
-b. Mohamed Elneny 25
-c. Sam Morsy 5
-d. Mostafa Mohamed 31
-Who won the Golden Boot in the 2020-2021 Premier League season?
-a. Harry Kane 9
-b. Mohamed Salah 11 *
-c. Bruno Fernandes 8
-d. Kevin De Bruyne 17
-Which player won the FIFA World Cup in 2018?
-a. Lionel Messi 10
-b. Antoine Griezmann 7 *
-c. Manuel Neuer 1
-d. Cristiano Ronaldo 7
-Ski:
-Which country hosted the Winter Olympics in 2022?
-a. Canada
-b. USA
-c. China *
-d. Norway
-Who is considered the greatest alpine skier of all time, with numerous Olympic and World Championship titles?
-a. Bode Miller
-b. Aksel Lund Svindal
-c. Mikaela Shiffrin
-d. Lindsey Vonn *
-In ski jumping, what is the term for the position a ski jumper assumes in the air to maximize distance?
-a. Tuck position
-b. Pike position
-c. V position *
-d. Spread-eagle position
-Which type of skiing involves navigating a downhill course marked with a series of gates?
-a. Freestyle skiing
-b. Alpine skiing *
-c. Cross-country skiing
-d. Nordic combined
-What does the acronym "FIS" stand for in the context of skiing?
-a. Freestyle International Skiing
-b. Fédération Internationale de Ski *
-c. Freestyle Ice Skating
-d. Winter Sports Federation
+#Arts:
+-Who painted the Mona Lisa?
+Vincent van Gogh
+Pablo Picasso
+Leonardo da Vinci *
+Michelangelo
+-Which artistic movement includes works like "Starry Night" and "Sunflowers"?
+Surrealism
+Post-Impressionism *
+Cubism
+Abstract Expressionism
+-Who wrote the play "Romeo and Juliet"?
+Charles Dickens
+William Shakespeare *
+Jane Austen
+F. Scott Fitzgerald
+-Which sculptor created the Statue of Liberty?
+Auguste Rodin
+Michelangelo
+Frédéric Auguste Bartholdi *
+Donatello
+-What art movement is known for its use of everyday objects and images, such as soup cans?
+Abstract Expressionism
+Pop Art *
+Dada
+Cubism
+#Science:
+-What is the chemical symbol for gold?
+Au *
+Ag
+Au
+Fe
+-Who developed the theory of relativity?
+Isaac Newton
+Albert Einstein *
+Galileo Galilei
+Stephen Hawking
+-What is the powerhouse of the cell?
+Nucleus
+Mitochondria *
+Ribosome
+Endoplasmic reticulum
+-Which planet is known as the "Red Planet"?
+Venus
+Mars *
+Jupiter
+Mars
+-What is the largest mammal on Earth?
+Elephant
+Blue Whale *
+Giraffe
+Hippopotamus
+#Desporto:
+##Soccer:
+-Who won the FIFA Ballon d'Or in 2022?
+Lionel Messi 10 *
+Cristiano Ronaldo 7
+Kylian Mbappé 7
+Thibaut Courtois 1
+-Which player is known as "CR7"?
+Neymar Jr 10
+Cristiano Ronaldo 7 *
+Antoine Griezmann 7
+Mohamed Salah 11
+-Whose the most known player from Egypt?
+Mohamed Salah 11 *
+Mohamed Elneny 25
+Sam Morsy 5
+Mostafa Mohamed 31
+-Who won the Golden Boot in the 2020-2021 Premier League season?
+Harry Kane 9
+Mohamed Salah 11 *
+Bruno Fernandes 8
+Kevin De Bruyne 17
+-Which player won the FIFA World Cup in 2018?
+Lionel Messi 10
+Antoine Griezmann 7 *
+Manuel Neuer 1
+Cristiano Ronaldo 7
+##Ski:
+TODO
 Swimming:
-Who holds the world record for the men's 100m freestyle?
-a. Michael Phelps
-b. César Cielo *
-c. Ryan Lochte
-d. Adam Peaty
-In which stroke do swimmers perform a dolphin kick and use both arms simultaneously in a butterfly motion?
-a. Backstroke
-b. Butterfly *
-c. Breaststroke
-d. Freestyle
-Which female swimmer won four gold medals in the 2016 Rio Olympics, dominating the freestyle and individual medley events?
-a. Missy Franklin
-b. Katie Ledecky
-c. Simone Manuel *
-d. Sarah Sjöström
-What is the distance of the men's longest competitive swimming event in the Olympics?
-a. 800 meters
-b. 1500 meters * 
-c. 1000 meters
-d. 2000 meters
-Who is often referred to as the "Flying Fish" and set multiple world records in the 100m and 200m freestyle events?
-a. Katie Ledecky
-b. Missy Franklin
-c. Cesar Cielo *
-d. Sun Yang
+TODO

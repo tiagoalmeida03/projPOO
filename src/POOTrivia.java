@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.lang.invoke.StringConcatFactory;
 import java.util.*;
 
 public class POOTrivia extends JPanel {
@@ -17,7 +18,7 @@ public class POOTrivia extends JPanel {
 
     public POOTrivia() {
         // Start a new game
-        startNewGame();
+        startNewGame(); //mal
 
         // Load questions from the file
         loadQuestions();
@@ -42,6 +43,19 @@ public class POOTrivia extends JPanel {
         }
         add(scoreLabel);
     }
+
+    public void startGame(){
+    }
+
+    private void returnQuestions(String question){
+
+    }
+
+    private void removeChar(String string){
+
+        
+    }
+
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
 
@@ -57,13 +71,14 @@ public class POOTrivia extends JPanel {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                if (line.endsWith("*")) {
-                    line = line.substring(0, line.length() - 1); // Remove the * at the end
-                    List<Object> questionData = new ArrayList<>();
-                    questionData.add(line);
-                    questionData.add(scanner.nextLine().trim()); // Right Answer
+                if (line.startsWith("#")) {
 
-                    rawQuestions.add(questionData);
+                    if (line.equalsIgnoreCase("Arts")){
+                        line = scanner.nextLine();
+                        while (!line.startsWith("#")){
+                            if
+                        }
+                    }
                 }
             }
 
@@ -249,14 +264,5 @@ public class POOTrivia extends JPanel {
             String selectedAnswer = button.getText();
             handleAnswerSubmission(selectedAnswer);
         }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("POO Trivia");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        frame.add(new POOTrivia());
-        frame.setVisible(true);
     }
 }
