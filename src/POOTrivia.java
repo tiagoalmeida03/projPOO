@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.lang.invoke.StringConcatFactory;
 import java.util.*;
 
 public class POOTrivia extends JPanel {
@@ -20,7 +21,7 @@ public class POOTrivia extends JPanel {
         loadQuestions();
 
         // Start a new game
-        //startNewGame();
+        startNewGame(); //mal
 
         // Load previous game results
         //loadGameResults();
@@ -43,66 +44,90 @@ public class POOTrivia extends JPanel {
         add(scoreLabel);
     }
 
+    public void startGame(){
+    }
+
+    private void returnQuestions(String question){
+
+    }
+
+    private void removeChar(String string){
+
+
+    }
+
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
-    
-        try {
+
+        try  {
+
             File file = new File("pootrivia.txt");
             if (!file.exists()) {
                 System.err.println("Error: File 'pootrivia.txt' not found.");
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             Scanner scanner = new Scanner(file);
 
-            System.out.println("Loading questions from 'pootrivia.txt'... " + scanner.hasNextLine());
+            System.out.println("Loading questions from 'pootrivia.txt'... ");
 
             while (scanner.hasNextLine()) {
-                String type = scanner.nextLine().trim(); // Read question type
-                List<Object> questionData = new ArrayList<>();
-                questionData.add(type);
+                String line = scanner.nextLine().trim();
 
-    
-                for (int i = 0; i < 5; i++) {
-                    String question = scanner.nextLine().trim(); // Read question
-                    questionData.add(question);
-    
+                if (line.startsWith("#")) {
+                    String type = line.substring(1, line.length() - 1).trim();
+
+                    List<Object> questionData = new ArrayList<>();
+                    questionData.add(type);
+                    rawQuestions.add(questionData);
+
+                } else if (line.startsWith("-")) {
+                    // It's a question
+                    String question = line.substring(1).trim();
+                    //System.out.printf("  %s\n", question);
+                    rawQuestions.get(rawQuestions.size() - 1).add(question);
+
                     // Read options
                     List<String> options = new ArrayList<>();
-                    for (int j = 0; j < 4; j++) {
+                    for (int j = 0; j < 5; j++) {
                         String option = scanner.nextLine().trim();
-                        options.add(option);
+                        if (option.substring(0,1).equalsIgnoreCase("*")){
+                            String correctAnswer = option.substring(1);
+                            //System.out.printf("    Correct Answer: %s\n", correctAnswer);
+                            rawQuestions.get(rawQuestions.size() - 1).add(correctAnswer);
+                            options.add(correctAnswer);
+                        }else {
+                            //System.out.printf("->    %s\n", option);
+                            options.add(option);
+                        }
                     }
-                    questionData.add(options);
-    
-                    // Read correct answer
-                    String correctAnswer = scanner.nextLine().trim();
-                    questionData.add(correctAnswer);
-    
-                    // Store correct answer as an option
-                    options.add(correctAnswer);
+                    rawQuestions.get(rawQuestions.size() - 1).add(options);
                 }
     
                 rawQuestions.add(questionData);
             }
-    
+
             scanner.close();
-    
+
             // Convert raw data to Questions objects
             questions = new ArrayList<>();
             for (List<Object> questionData : rawQuestions) {
                 String questionType = (String) questionData.get(0);
-                for (int i = 1; i < questionData.size(); i += 5) {
+
+                for (int i = 1; i < questionData.size(); i += 3) {
                     String questionText = (String) questionData.get(i);
-                    List<String> questionOptions = (List<String>) questionData.get(i + 1);
-                    String correctAnswer = (String) questionData.get(i + 4);
-    
+                    List<String> questionOptions = (List<String>) questionData.get(i + 2);
+                    String correctAnswer = (String) questionData.get(i + 1);
+
                     // Create the appropriate Questions subclass based on type
                     Questions question;
                     if (questionType.startsWith("Arts")) {
                         question = new ArtsQ(questionText, questionOptions, correctAnswer);
+
+                        //System.out.printf("1 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Science")) {
                         question = new ScienceQ(questionText, questionOptions, correctAnswer);
+                        //System.out.printf("2 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Soccer")) {
                         question = new SoccerQ(questionText, questionOptions, correctAnswer);
                     } else if (questionType.startsWith("Ski")) {
@@ -113,39 +138,26 @@ public class POOTrivia extends JPanel {
                         System.err.println("Error: Unknown question type.");
                         continue; // Skip this question
                     }
-    
+
                     questions.add(question);
                 }
             }
-    
-            // Print the loaded questions
-            for (Questions question : questions) {
-                System.out.println(question);
-            }
-    
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private void startNewGame() {
-        currentQuestionIndex = 0;
-        currentGameScore = 0;
-        Collections.shuffle(questions); // Shuffle questions for each new game
-        displayNextQuestion();
-    }
-    
     private void loadGameResults() {
         gameResults = new ArrayList<>();
-    
+
         try {
             File file = new File("game_results.obj");
-    
+
             if (!file.exists()) {
                 System.err.println("Error: File 'game_results.obj' not found.");
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 Object obj = objectInputStream.readObject();
                 if (obj instanceof List<?>) {
@@ -165,21 +177,21 @@ public class POOTrivia extends JPanel {
                     System.err.println("Error: Unexpected object type in 'game_results.obj'.");
                 }
             }
-    
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void saveGameResult(GameResult gameResult) {
         try {
             File file = new File("game_results.obj");
-    
+
             if (!file.exists()) {
                 System.err.println("Error: File 'game_results.obj' not found.");
                 return; // Exit the method if the file doesn't exist
             }
-    
+
             try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
                 Object obj = objectInputStream.readObject();
                 if (obj instanceof List<?>) {
@@ -199,15 +211,15 @@ public class POOTrivia extends JPanel {
                     System.err.println("Error: Unexpected object type in 'game_results.obj'.");
                 }
             }
-    
+
             // Add the new game result
             gameResults.add(gameResult);
-    
+
             // Save the updated list of game results
             try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
                 objectOutputStream.writeObject(gameResults);
             }
-    
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -216,10 +228,10 @@ public class POOTrivia extends JPanel {
     private void showLeaderboard(int numberOfTopScores) {
         // Retrieve the game results from the list
         List<GameResult> gameResults = getGameResults();
-    
+
         // Sort the game results based on the scores
         Collections.sort(gameResults, Comparator.comparingInt(GameResult::getScore).reversed());
-    
+
         // Display the leaderboard with player names and scores
         StringBuilder leaderboard = new StringBuilder();
         leaderboard.append("Leaderboard:\n");
@@ -229,7 +241,7 @@ public class POOTrivia extends JPanel {
         }
         JOptionPane.showMessageDialog(null, leaderboard.toString(), "Leaderboard", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
 
     private List<GameResult> getGameResults() {
         return gameResults;
@@ -238,6 +250,7 @@ public class POOTrivia extends JPanel {
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
             Questions question = questions.get(currentQuestionIndex);
+            System.out.printf("Here " + question.getQuestion());
             questionLabel.setText(question.getQuestion());
 
             List<String> answers = question.getAnswers();

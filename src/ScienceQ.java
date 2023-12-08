@@ -8,6 +8,11 @@ public class ScienceQ extends Questions {
     }
 
     @Override
+    public String getQuestion() {
+        return text + "\n";
+    }
+
+    @Override
     public List<String> getAnswers() {
         return options;
     }

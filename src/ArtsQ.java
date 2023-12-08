@@ -9,7 +9,7 @@ public class ArtsQ extends Questions {
 
     @Override
     public String getQuestion() {
-        return text;
+        return text + "Aqui\n";
     }
 
     @Override
