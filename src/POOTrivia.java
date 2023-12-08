@@ -127,8 +127,6 @@ public class POOTrivia extends JPanel {
             e.printStackTrace();
         }
     }
-    
-
 
     private void startNewGame() {
         currentQuestionIndex = 0;
@@ -293,10 +291,5 @@ public class POOTrivia extends JPanel {
             String selectedAnswer = button.getText();
             handleAnswerSubmission(selectedAnswer);
         }
-    }
-
-    public static void main(String[] args) {
-        POOTrivia trivia = new POOTrivia();
-        trivia.loadQuestions();
     }
 }
