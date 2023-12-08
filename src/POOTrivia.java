@@ -20,10 +20,10 @@ public class POOTrivia extends JPanel {
         loadQuestions();
 
         // Start a new game
-        startNewGame();
+        //startNewGame();
 
         // Load previous game results
-        loadGameResults();
+        //loadGameResults();
 
         // Initialize GUI components
         questionLabel = new JLabel();
@@ -45,71 +45,89 @@ public class POOTrivia extends JPanel {
 
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
-
+    
         try {
             File file = new File("pootrivia.txt");
-            Scanner scanner = new Scanner(file);
-
             if (!file.exists()) {
                 System.err.println("Error: File 'pootrivia.txt' not found.");
-                scanner.close(); // Close the scanner
                 return; // Exit the method if the file doesn't exist
             }
+    
+            Scanner scanner = new Scanner(file);
+
+            System.out.println("Loading questions from 'pootrivia.txt'... " + scanner.hasNextLine());
 
             while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.endsWith("*")) {
-                    line = line.substring(0, line.length() - 1); // Remove the * at the end
-                    List<Object> questionData = new ArrayList<>();
-                    questionData.add(line);
+                String type = scanner.nextLine().trim(); // Read question type
+                List<Object> questionData = new ArrayList<>();
+                questionData.add(type);
 
+    
+                for (int i = 0; i < 5; i++) {
+                    String question = scanner.nextLine().trim(); // Read question
+                    questionData.add(question);
+    
                     // Read options
                     List<String> options = new ArrayList<>();
-                    for (int i = 0; i < 4; i++) {
-                        options.add(scanner.nextLine().trim());
+                    for (int j = 0; j < 4; j++) {
+                        String option = scanner.nextLine().trim();
+                        options.add(option);
                     }
                     questionData.add(options);
-
+    
                     // Read correct answer
-                    questionData.add(scanner.nextLine().trim()); // Right Answer
-
-                    rawQuestions.add(questionData);
+                    String correctAnswer = scanner.nextLine().trim();
+                    questionData.add(correctAnswer);
+    
+                    // Store correct answer as an option
+                    options.add(correctAnswer);
                 }
+    
+                rawQuestions.add(questionData);
             }
-
+    
             scanner.close();
-
+    
             // Convert raw data to Questions objects
             questions = new ArrayList<>();
             for (List<Object> questionData : rawQuestions) {
-                String questionText = (String) questionData.get(0);
-                List<String> questionOptions = (List<String>) questionData.get(1);
-                String correctAnswer = (String) questionData.get(2);
-
-                // Create the appropriate Questions subclass based on type
-                Questions question;
-                if (questionText.startsWith("Arts")) {
-                    question = new ArtsQ(questionText, questionOptions, correctAnswer);
-                } else if (questionText.startsWith("Science")) {
-                    question = new ScienceQ(questionText, questionOptions, correctAnswer);
-                } else if (questionText.startsWith("Soccer")) {
-                    question = new SoccerQ(questionText, questionOptions, correctAnswer);
-                } else if (questionText.startsWith("Ski")) {
-                    question = new SkiQ(questionText, questionOptions, correctAnswer);
-                } else if (questionText.startsWith("Swimming")) {
-                    question = new SwimmingQ(questionText, questionOptions, correctAnswer);
-                } else {
-                    System.err.println("Error: Unknown question type.");
-                    continue; // Skip this question
+                String questionType = (String) questionData.get(0);
+                for (int i = 1; i < questionData.size(); i += 5) {
+                    String questionText = (String) questionData.get(i);
+                    List<String> questionOptions = (List<String>) questionData.get(i + 1);
+                    String correctAnswer = (String) questionData.get(i + 4);
+    
+                    // Create the appropriate Questions subclass based on type
+                    Questions question;
+                    if (questionType.startsWith("Arts")) {
+                        question = new ArtsQ(questionText, questionOptions, correctAnswer);
+                    } else if (questionType.startsWith("Science")) {
+                        question = new ScienceQ(questionText, questionOptions, correctAnswer);
+                    } else if (questionType.startsWith("Soccer")) {
+                        question = new SoccerQ(questionText, questionOptions, correctAnswer);
+                    } else if (questionType.startsWith("Ski")) {
+                        question = new SkiQ(questionText, questionOptions, correctAnswer);
+                    } else if (questionType.startsWith("Swimming")) {
+                        question = new SwimmingQ(questionText, questionOptions, correctAnswer);
+                    } else {
+                        System.err.println("Error: Unknown question type.");
+                        continue; // Skip this question
+                    }
+    
+                    questions.add(question);
                 }
-
-                questions.add(question);
             }
-
+    
+            // Print the loaded questions
+            for (Questions question : questions) {
+                System.out.println(question);
+            }
+    
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
+    
 
 
     private void startNewGame() {
@@ -278,11 +296,7 @@ public class POOTrivia extends JPanel {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("POO Trivia");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        frame.add(new POOTrivia());
-        frame.setVisible(true);
+        POOTrivia trivia = new POOTrivia();
+        trivia.loadQuestions();
     }
 }
