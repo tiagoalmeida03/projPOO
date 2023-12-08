@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c9b42e4-9ed2-4171-ba40-b72f4a9e84d2" name="Changes" comment="">
+    <list default="true" id="084d4a95-98c5-4b4f-94a7-58f2659d0738" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pootrivia.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pootrivia.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ArtsQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArtsQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/POOTrivia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/POOTrivia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Questions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScienceQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScienceQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SkiQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SkiQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SoccerQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SoccerQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SportsQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SportsQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SwimmingQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SwimmingQ.java" afterDir="false" />
+    </list>
+    <list id="b331d47c-9ae5-499d-9926-54cdfbad72af" name="Changes by tiagoalmeida" comment="">
+      <change beforePath="$PROJECT_DIR$/pootrivia.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pootrivia.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/POOTrivia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/POOTrivia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +30,64 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/pootrivia.txt">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="5" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="6" end1="6" start2="6" end2="7" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="8" end1="9" start2="9" end2="10" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="11" end1="11" start2="12" end2="13" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="13" end1="14" start2="15" end2="16" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="16" end1="16" start2="18" end2="19" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="19" end1="20" start2="22" end2="23" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="21" end1="21" start2="24" end2="25" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="23" end1="24" start2="27" end2="28" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="26" end1="26" start2="30" end2="31" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="28" end1="29" start2="33" end2="34" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="32" end1="32" start2="37" end2="38" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="34" end1="35" start2="40" end2="41" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="37" end1="37" start2="43" end2="44" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="39" end1="40" start2="46" end2="47" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="41" end1="42" start2="48" end2="50" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="44" end1="45" start2="52" end2="53" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="47" end1="47" start2="55" end2="56" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="49" end1="50" start2="58" end2="59" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="52" end1="54" start2="61" end2="63" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="55" end1="56" start2="64" end2="65" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="59" end1="59" start2="68" end2="69" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="61" end1="62" start2="71" end2="72" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="64" end1="64" start2="74" end2="75" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="65" end1="66" start2="76" end2="77" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="69" end1="69" start2="80" end2="81" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="71" end1="72" start2="83" end2="84" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="74" end1="74" start2="86" end2="87" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="76" end1="77" start2="89" end2="90" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="79" end1="83" start2="92" end2="155" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/POOTrivia.java">
+      <ranges>
+        <range start1="19" end1="19" start2="19" end2="22" changelist="b331d47c-9ae5-499d-9926-54cdfbad72af" />
+        <range start1="21" end1="24" start2="24" end2="24" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="26" end1="27" start2="26" end2="27" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="55" end1="56" start2="55" end2="56" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="61" end1="62" start2="61" end2="62" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="63" end1="65" start2="63" end2="63" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="67" end1="68" start2="65" end2="65" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="71" end1="71" start2="68" end2="72" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="72" end1="73" start2="73" end2="75" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="74" end1="74" start2="76" end2="81" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="75" end1="79" start2="82" end2="100" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="81" end1="81" start2="102" end2="103" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="89" end1="91" start2="111" end2="116" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="92" end1="94" start2="117" end2="135" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="95" end1="96" start2="136" end2="138" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="97" end1="98" start2="139" end2="139" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="102" end1="102" start2="143" end2="144" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+        <range start1="213" end1="213" start2="255" end2="256" changelist="084d4a95-98c5-4b4f-94a7-58f2659d0738" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -24,16 +96,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -50,5 +124,15 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

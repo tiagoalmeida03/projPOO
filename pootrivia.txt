@@ -2,82 +2,154 @@
 -Who painted the Mona Lisa?
 Vincent van Gogh
 Pablo Picasso
-Leonardo da Vinci *
+*Leonardo da Vinci
 Michelangelo
+Salvador Dalí
 -Which artistic movement includes works like "Starry Night" and "Sunflowers"?
 Surrealism
-Post-Impressionism *
+*Post-Impressionism
 Cubism
 Abstract Expressionism
+Ghoti
 -Who wrote the play "Romeo and Juliet"?
 Charles Dickens
-William Shakespeare *
+*William Shakespeare
 Jane Austen
 F. Scott Fitzgerald
+J. K. Rowling
 -Which sculptor created the Statue of Liberty?
 Auguste Rodin
 Michelangelo
-Frédéric Auguste Bartholdi *
+*Frédéric Auguste Bartholdi
 Donatello
+Henry Moore
 -What art movement is known for its use of everyday objects and images, such as soup cans?
 Abstract Expressionism
-Pop Art *
+*Pop Art
 Dada
 Cubism
+Surrealism
 #Science:
 -What is the chemical symbol for gold?
-Au *
+*Au
 Ag
 Au
 Fe
+Ra
 -Who developed the theory of relativity?
 Isaac Newton
-Albert Einstein *
+*Albert Einstein
 Galileo Galilei
 Stephen Hawking
+Marie Curie
 -What is the powerhouse of the cell?
 Nucleus
-Mitochondria *
+*Mitochondria
 Ribosome
-Endoplasmic reticulum
+Endoplasmic Reticulum
+Amino Acid Chain
 -Which planet is known as the "Red Planet"?
 Venus
-Mars *
+*Mars
 Jupiter
 Mars
+Saturn
 -What is the largest mammal on Earth?
 Elephant
-Blue Whale *
+*Blue Whale
 Giraffe
 Hippopotamus
-#Desporto:
-##Soccer:
+White Whale
+#Soccer:
 -Who won the FIFA Ballon d'Or in 2022?
-Lionel Messi 10 *
+*Lionel Messi 10
 Cristiano Ronaldo 7
 Kylian Mbappé 7
 Thibaut Courtois 1
+Fábio Coentão 5
 -Which player is known as "CR7"?
 Neymar Jr 10
-Cristiano Ronaldo 7 *
+*Cristiano Ronaldo 7
 Antoine Griezmann 7
 Mohamed Salah 11
+Hugo Almeida 9
 -Whose the most known player from Egypt?
-Mohamed Salah 11 *
+*Mohamed Salah 11
 Mohamed Elneny 25
 Sam Morsy 5
 Mostafa Mohamed 31
+Quaresma 20
 -Who won the Golden Boot in the 2020-2021 Premier League season?
 Harry Kane 9
-Mohamed Salah 11 *
+*Mohamed Salah 11
 Bruno Fernandes 8
 Kevin De Bruyne 17
+Kylian Mbappé 7
 -Which player won the FIFA World Cup in 2018?
 Lionel Messi 10
-Antoine Griezmann 7 *
+*Antoine Griezmann 7
 Manuel Neuer 1
 Cristiano Ronaldo 7
-##Ski:
-TODO
-Swimming:
-TODO
+Hugo Almeida 9
+#Ski:
+-Which country hosted the Winter Olympics in 2022?
+Canada
+USA
+*China
+Norway
+Sweden
+-Who is considered the greatest alpine skier of all time, with numerous Olympic and World Championship titles?
+Bode Miller
+Aksel Lund Svindal
+Mikaela Shiffrin
+*Lindsey Vonn
+John Curie
+-In ski jumping, what is the term for the position a ski jumper assumes in the air to maximize distance?
+Tuck Position
+Pike Position
+*V Position
+Spread-eagle Popsition
+I Position
+-Which type of skiing involves navigating a downhill course marked with a series of gates?
+Freestyle skiing
+*Alpine skiing
+Cross-country Skiing
+Nordic combined
+Switzerland Skiing
+-What does the acronym "FIS" stand for in the context of skiing?
+Freestyle International Skiing
+*Fédération Internationale de Ski
+Freestyle Ice Skating
+Winter Sports Federation
+International Ski Federation
+#Swimming:
+-Who holds the world record for the men's 100m freestyle?
+Michael Phelps
+*César Cielo
+Ryan Lochte
+Adam Peaty
+John Alpes
+-In which stroke do swimmers perform a dolphin kick and use both arms simultaneously in a butterfly motion?
+Backstroke
+*Butterfly
+Breaststroke
+Freestyle
+Dog Style
+-Which female swimmer won four gold medals in the 2016 Rio Olympics, dominating the freestyle and individual medley events?
+Missy Franklin
+Katie Ledecky
+*Simone Manuel
+Sarah Sjöström
+Antonie Florentine
+-What is the distance of the men's longest competitive swimming event in the Olympics?
+500 meters
+800 meters
+1000 meters
+*1500 meters
+2000 meters
+-Who is often referred to as the "Flying Fish" and set multiple world records in the 100m and 200m freestyle events?
+Katie Ledecky
+Missy Franklin
+*Cesar Cielo
+Sun Yang
+Michael Phelps

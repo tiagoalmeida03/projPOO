@@ -17,11 +17,11 @@ public class POOTrivia extends JPanel {
     private JLabel scoreLabel;
 
     public POOTrivia() {
-        // Start a new game
-        startNewGame(); //mal
-
         // Load questions from the file
         loadQuestions();
+
+        // Start a new game
+        startNewGame(); //mal
 
         // Load previous game results
         loadGameResults();
@@ -53,32 +53,54 @@ public class POOTrivia extends JPanel {
 
     private void removeChar(String string){
 
-        
+
     }
 
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
 
-        try {
+        try  {
             File file = new File("pootrivia.txt");
-            Scanner scanner = new Scanner(file);
-
             if (!file.exists()) {
                 System.err.println("Error: File 'pootrivia.txt' not found.");
-                scanner.close(); // Close the scanner
                 return; // Exit the method if the file doesn't exist
             }
 
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.startsWith("#")) {
+            Scanner scanner = new Scanner(file);
 
-                    if (line.equalsIgnoreCase("Arts")){
-                        line = scanner.nextLine();
-                        while (!line.startsWith("#")){
-                            if
+            System.out.println("Loading questions from 'pootrivia.txt'... ");
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine().trim();
+
+                if (line.startsWith("#")) {
+                    String type = line.substring(1, line.length() - 1).trim();
+
+                    List<Object> questionData = new ArrayList<>();
+                    questionData.add(type);
+                    rawQuestions.add(questionData);
+
+                } else if (line.startsWith("-")) {
+                    // It's a question
+                    String question = line.substring(1).trim();
+                    //System.out.printf("  %s\n", question);
+                    rawQuestions.get(rawQuestions.size() - 1).add(question);
+
+                    // Read options
+                    List<String> options = new ArrayList<>();
+                    for (int j = 0; j < 5; j++) {
+                        String option = scanner.nextLine().trim();
+                        if (option.substring(0,1).equalsIgnoreCase("*")){
+                            String correctAnswer = option.substring(1);
+                            //System.out.printf("    Correct Answer: %s\n", correctAnswer);
+                            rawQuestions.get(rawQuestions.size() - 1).add(correctAnswer);
+                            options.add(correctAnswer);
+                        }else {
+                            //System.out.printf("->    %s\n", option);
+                            options.add(option);
                         }
                     }
+                    rawQuestions.get(rawQuestions.size() - 1).add(options);
                 }
             }
 
@@ -87,19 +109,39 @@ public class POOTrivia extends JPanel {
             // Convert raw data to Questions objects
             questions = new ArrayList<>();
             for (List<Object> questionData : rawQuestions) {
-                String questionText = (String) questionData.get(0);
-                String correctAnswer = (String) questionData.get(1);
+                String questionType = (String) questionData.get(0);
+                for (int i = 1; i < questionData.size(); i += 3) {
+                    String questionText = (String) questionData.get(i);
+                    List<String> questionOptions = (List<String>) questionData.get(i + 2);
+                    String correctAnswer = (String) questionData.get(i + 1);
 
-                // Create the appropriate Questions subclass based on type
-                Questions question = new ArtsQ(questionText, null, correctAnswer); // Adjust parameters accordingly
+                    // Create the appropriate Questions subclass based on type
+                    Questions question;
+                    if (questionType.startsWith("Arts")) {
+                        question = new ArtsQ(questionText, questionOptions, correctAnswer);
+                        //System.out.printf("1 -> " + question.getQuestion());
+                    } else if (questionType.startsWith("Science")) {
+                        question = new ScienceQ(questionText, questionOptions, correctAnswer);
+                        //System.out.printf("2 -> " + question.getQuestion());
+                    } else if (questionType.startsWith("Soccer")) {
+                        question = new SoccerQ(questionText, questionOptions, correctAnswer);
+                    } else if (questionType.startsWith("Ski")) {
+                        question = new SkiQ(questionText, questionOptions, correctAnswer);
+                    } else if (questionType.startsWith("Swimming")) {
+                        question = new SwimmingQ(questionText, questionOptions, correctAnswer);
+                    } else {
+                        System.err.println("Error: Unknown question type.");
+                        continue; // Skip this question
+                    }
 
-                questions.add(question);
+                    questions.add(question);
+                }
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
+
 
     private void loadGameResults() {
         gameResults = new ArrayList<>();
@@ -211,6 +253,7 @@ public class POOTrivia extends JPanel {
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
             Questions question = questions.get(currentQuestionIndex);
+            System.out.printf("Here " + question.getQuestion());
             questionLabel.setText(question.getQuestion());
 
             List<String> answers = question.getAnswers();

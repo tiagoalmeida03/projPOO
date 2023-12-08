@@ -3,13 +3,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class ArtsQ extends Questions {
-    public ArtsQ(String question, List<String> options, String correctAnswer) {
-        super(question, options, correctAnswer);
+    public ArtsQ(String text, List<String> options, String correctAnswer) {
+        super(text, options, correctAnswer);
     }
 
     @Override
     public String getQuestion() {
-        return questions;
+        return text + "Aqui\n";
     }
 
     @Override
