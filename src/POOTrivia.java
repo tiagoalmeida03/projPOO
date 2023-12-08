@@ -247,6 +247,13 @@ public class POOTrivia extends JPanel {
         return gameResults;
     }
 
+    private void startNewGame() {
+        currentQuestionIndex = 0;
+        currentGameScore = 0;
+        Collections.shuffle(questions); // Shuffle questions for each new game
+        displayNextQuestion();
+    }
+
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
             Questions question = questions.get(currentQuestionIndex);
