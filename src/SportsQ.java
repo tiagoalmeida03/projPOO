@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SportsQ extends Questions {
+public abstract class SportsQ extends Questions {
     public SportsQ(String text, List<String> options, String correctAnswer) {
         super(text, options, correctAnswer);
     }
