@@ -24,7 +24,7 @@ public class POOTrivia extends JPanel {
         startNewGame(); //mal
 
         // Load previous game results
-        loadGameResults();
+        //loadGameResults();
 
         // Initialize GUI components
         questionLabel = new JLabel();
@@ -60,6 +60,7 @@ public class POOTrivia extends JPanel {
         List<List<Object>> rawQuestions = new ArrayList<>();
 
         try  {
+
             File file = new File("pootrivia.txt");
             if (!file.exists()) {
                 System.err.println("Error: File 'pootrivia.txt' not found.");
@@ -102,6 +103,8 @@ public class POOTrivia extends JPanel {
                     }
                     rawQuestions.get(rawQuestions.size() - 1).add(options);
                 }
+    
+                rawQuestions.add(questionData);
             }
 
             scanner.close();
@@ -110,6 +113,7 @@ public class POOTrivia extends JPanel {
             questions = new ArrayList<>();
             for (List<Object> questionData : rawQuestions) {
                 String questionType = (String) questionData.get(0);
+
                 for (int i = 1; i < questionData.size(); i += 3) {
                     String questionText = (String) questionData.get(i);
                     List<String> questionOptions = (List<String>) questionData.get(i + 2);
@@ -119,6 +123,7 @@ public class POOTrivia extends JPanel {
                     Questions question;
                     if (questionType.startsWith("Arts")) {
                         question = new ArtsQ(questionText, questionOptions, correctAnswer);
+
                         //System.out.printf("1 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Science")) {
                         question = new ScienceQ(questionText, questionOptions, correctAnswer);
@@ -141,7 +146,6 @@ public class POOTrivia extends JPanel {
             e.printStackTrace();
         }
     }
-
 
     private void loadGameResults() {
         gameResults = new ArrayList<>();
@@ -241,13 +245,6 @@ public class POOTrivia extends JPanel {
 
     private List<GameResult> getGameResults() {
         return gameResults;
-    }
-
-    private void startNewGame() {
-        currentQuestionIndex = 0;
-        currentGameScore = 0;
-        Collections.shuffle(questions); // Shuffle questions for each new game
-        displayNextQuestion();
     }
 
     private void displayNextQuestion() {
