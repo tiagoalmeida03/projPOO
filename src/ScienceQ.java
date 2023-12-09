@@ -9,7 +9,7 @@ public class ScienceQ extends Questions {
 
     @Override
     public String getQuestion() {
-        return text + "\n";
+        return textQuestion;
     }
 
     @Override

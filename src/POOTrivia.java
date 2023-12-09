@@ -17,14 +17,8 @@ public class POOTrivia extends JPanel {
     private JLabel scoreLabel;
 
     public POOTrivia() {
-        // Load questions from the file
-        loadQuestions();
-
-        // Start a new game
-        startNewGame(); //mal
-
         // Load previous game results
-        loadGameResults();
+        //loadGameResults();
 
         // Initialize GUI components
         questionLabel = new JLabel();
@@ -42,6 +36,12 @@ public class POOTrivia extends JPanel {
             add(button);
         }
         add(scoreLabel);
+
+        // Load questions from the file
+        loadQuestions();
+
+        // Start a new game
+        startNewGame(); //TODO:
     }
 
     public void startGame(){
@@ -253,7 +253,6 @@ public class POOTrivia extends JPanel {
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
             Questions question = questions.get(currentQuestionIndex);
-            System.out.printf("Here " + question.getQuestion());
             questionLabel.setText(question.getQuestion());
 
             List<String> answers = question.getAnswers();
@@ -289,8 +288,8 @@ public class POOTrivia extends JPanel {
 
         // Prompt for player's name
         String playerName = JOptionPane.showInputDialog(this, "Enter your name:");
-
-        // Create a new game result
+        //TODO: Quando se clica no x para fechar a aba deve perguntar se tem a certeza que deseja sair, se sim acaba o programa todo,
+        // se nao deve voltar a onde estava
         GameResult gameResult = new GameResult(new Player(playerName), new ArrayList<>(), new ArrayList<>());
 
         // Save the game result

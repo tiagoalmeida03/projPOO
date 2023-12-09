@@ -1,18 +1,18 @@
 import java.util.List;
 
 public abstract class Questions {
-    protected String text;
+    protected String textQuestion;
     protected List<String> options;
     protected String correctAnswer;
 
     public Questions(String text, List<String> options, String correctAnswer) {
-        this.text = text;
+        this.textQuestion = text;
         this.options = options;
         this.correctAnswer = correctAnswer;
     }
 
     public String getQuestion() {
-        return text;
+        return textQuestion;
     }
 
     public List<String> getOptions() {
