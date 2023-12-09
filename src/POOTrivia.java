@@ -9,18 +9,30 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
 
+/**
+ * The POOTrivia class represents the main game panel for the POO Trivia game.
+ * It extends JPanel and provides the graphical user interface for the game.
+ * The game involves answering various types of questions.
+ *
+ */
+
 public class POOTrivia extends JPanel {
+    // Instance variables for managing game state
     private List<Questions> questions;
     private int currentQuestionIndex;
     private int currentGameScore;
 
+    // GUI components
     private JButton[] answerButtons;
     private JLabel questionLabel;
     private JLabel scoreLabel;
-
     private JButton trueButton;
     private JButton falseButton;
 
+    /**
+     * Constructs a new instance of the POOTrivia class.
+     * Initializes the GUI components and adds action listeners.
+     */
     public POOTrivia() {
         // Display the first panel
         firstPanel();
@@ -32,6 +44,12 @@ public class POOTrivia extends JPanel {
         falseButton.addActionListener(new TrueFalseButtonListener(false));
     }
 
+    /**
+     * Creates and returns the first panel displayed when the game starts.
+     * This panel includes a welcome message and start/cancel buttons.
+     *
+     * @return The first panel for the game.
+     */
     public JPanel firstPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -83,6 +101,10 @@ public class POOTrivia extends JPanel {
         return panel;
     }
 
+    /**
+     * Initializes the GUI components used in the game.
+     * Called when the game starts to set up the initial state.
+     */
     private void startComponents() {
         questionLabel = new JLabel();
         scoreLabel = new JLabel();
@@ -107,6 +129,10 @@ public class POOTrivia extends JPanel {
         add(trueFalsePanel);
     }
 
+    /**
+     * ActionListener implementation for True/False buttons.
+     * Handles True/False button clicks and updates the game state accordingly.
+     */
     private class TrueFalseButtonListener implements ActionListener {
         private boolean isTrue;
 
@@ -121,9 +147,13 @@ public class POOTrivia extends JPanel {
         }
     }
 
+    /**
+     * Loads questions from the "pootrivia.txt" file and initializes the questions list.
+     */
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
 
+        // Code for loading questions from file
         try {
             File file = new File("pootrivia.txt");
             if (!file.exists()) {
@@ -207,6 +237,9 @@ public class POOTrivia extends JPanel {
         }
     }
 
+    /**
+     * Starts a new game by resetting the game state and displaying the first question.
+     */
     private void startNewGame() {
         currentQuestionIndex = 0;
         currentGameScore = 0;
@@ -214,6 +247,10 @@ public class POOTrivia extends JPanel {
         displayNextQuestion();
     }
 
+    /**
+     * Displays the next question in the game.
+     * Updates the GUI components to show the current question and answer options.
+     */
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
             Questions question = questions.get(currentQuestionIndex);
@@ -315,21 +352,43 @@ public class POOTrivia extends JPanel {
         }
     }
 
-    // Helper method to get the name from a Soccer option
+    /**
+     * Extracts and returns the name from a Soccer option.
+     *
+     * @param soccerOption The Soccer option containing both the name and the shirt number.
+     * @return The name extracted from the Soccer option.
+     */
     private String getNameFromSoccerOption(String soccerOption) {
+        // Split the Soccer option into parts using space as the delimiter
         String[] parts = soccerOption.split(" ");
-        // Exclude the last part
+        
+        // Exclude the last part (which represents the shirt number)
         String[] allExceptLast = Arrays.copyOfRange(parts, 0, parts.length - 1);
-        // Join the parts back together
+        
+        // Join the parts back together to get the name
         return String.join(" ", allExceptLast);
     }
 
-    // Helper method to get the shirt number from a Soccer option
+    /**
+     * Extracts and returns the shirt number from a Soccer option.
+     *
+     * @param soccerOption The Soccer option containing both the name and the shirt number.
+     * @return The shirt number extracted from the Soccer option.
+     */
     private String getNumShirtFromSoccerOption(String soccerOption) {
+        // Split the Soccer option into parts using space as the delimiter
         String[] parts = soccerOption.split(" ");
+        
+        // Return the last part, which represents the shirt number
         return parts[parts.length - 1];
     }
 
+
+    /**
+     * Handles True/False button clicks and updates the game state.
+     *
+     * @param selectedAnswer The selected True or False answer.
+     */
     private void handleTrueFalseButtonClick(boolean selectedAnswer) {
         // Check if the selected answer is correct for True/False questions
         Questions currentQuestion = questions.get(currentQuestionIndex - 1);
@@ -361,6 +420,11 @@ public class POOTrivia extends JPanel {
         }
     }
 
+    /**
+     * Handles answer submissions and updates the game state.
+     *
+     * @param selectedAnswer The selected answer submitted by the player.
+     */
     private void handleAnswerSubmission(String selectedAnswer) {
         // Check if the selected answer is correct
         Questions currentQuestion = questions.get(currentQuestionIndex - 1);
@@ -385,6 +449,9 @@ public class POOTrivia extends JPanel {
         }
     }
 
+    /**
+     * Ends the game, displays the final score, and prompts for the player's name.
+     */
     private void endGame() {
         // Dispose the main panel
         SwingUtilities.getWindowAncestor(this).dispose();
@@ -430,6 +497,9 @@ public class POOTrivia extends JPanel {
         }
     }
     
+    /**
+     * Displays the top 3 players and their scores, along with their correct and incorrect answers.
+     */
     public void leaderBoard() {
         // Obtém a lista dos melhores jogadores
         List<Player> topPlayers = Player.getTopPlayers();
@@ -462,6 +532,10 @@ public class POOTrivia extends JPanel {
         JOptionPane.showMessageDialog(this, scrollPane, "Top 3 Players", JOptionPane.PLAIN_MESSAGE);
     }
 
+    /**
+     * ActionListener implementation for answer buttons.
+     * Handles answer button clicks and updates the game state accordingly.
+     */
     private class AnswerButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
