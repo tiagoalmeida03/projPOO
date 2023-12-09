@@ -178,7 +178,6 @@ public class POOTrivia extends JPanel {
                 } else if (line.startsWith("-")) {
                     // It's a question
                     String question = line.substring(1).trim();
-                    // System.out.printf(" %s\n", question);
                     rawQuestions.get(rawQuestions.size() - 1).add(question);
 
                     // Read options
@@ -187,11 +186,9 @@ public class POOTrivia extends JPanel {
                         String option = scanner.nextLine().trim();
                         if (option.substring(0, 1).equalsIgnoreCase("*")) {
                             String correctAnswer = option.substring(1);
-                            // System.out.printf(" Correct Answer: %s\n", correctAnswer);
                             rawQuestions.get(rawQuestions.size() - 1).add(correctAnswer);
                             options.add(correctAnswer);
                         } else {
-                            // System.out.printf("-> %s\n", option);
                             options.add(option);
                         }
                     }
@@ -214,10 +211,9 @@ public class POOTrivia extends JPanel {
                     Questions question;
                     if (questionType.startsWith("Arts")) {
                         question = new ArtsQ(questionText, questionOptions, correctAnswer);
-                        //System.out.printf("1 -> " + question.getQuestion());
+
                     } else if (questionType.startsWith("Science")) {
                         question = new ScienceQ(questionText, questionOptions, correctAnswer);
-                        //System.out.printf("2 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Soccer")) {
                         question = new SoccerQ(questionText, questionOptions, correctAnswer);
                     } else if (questionType.startsWith("Ski")) {
@@ -278,7 +274,6 @@ public class POOTrivia extends JPanel {
                         answerButtons[i].setText(answers.get(i));
                         answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
                         add(answerButtons[i]);
-                        System.out.println("Answers chosen: " + answers.get(i));
                     }
 
                     if (answers.get(0) != question.getCorrectAnswer() && answers.get(1) != question.getCorrectAnswer() && answers.get(2) != question.getCorrectAnswer()){
@@ -303,17 +298,16 @@ public class POOTrivia extends JPanel {
                 
                 if (currentQuestionIndex < 3){
                     // If it's one of the first three questions, display only three options
-                    for (int i = 1; i < 3; i++) {
+                    for (int i = 0; i < 3; i++) {
                         answerButtons[i].setText(getNameFromSoccerOption(answers.get(i)));
                         answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
                         add(answerButtons[i]);
-                        System.out.println("Answers chosen: " + answers.get(i));
                     }
 
                     if (answers.get(0) != question.getCorrectAnswer() && answers.get(1) != question.getCorrectAnswer() && answers.get(2) != question.getCorrectAnswer()){
                         Random random = new Random();
                         int randomIndex = random.nextInt(3);
-                        answerButtons[randomIndex].setText(question.getCorrectAnswer());
+                        answerButtons[randomIndex].setText(getNameFromSoccerOption(question.getCorrectAnswer()));
                         answerButtons[randomIndex].setFont(answerButtons[randomIndex].getFont().deriveFont(18f)); // Set a larger font size
                         add(answerButtons[randomIndex]);
                     }
@@ -401,10 +395,8 @@ public class POOTrivia extends JPanel {
             questionType = questionType.substring(0, questionType.indexOf("@"));
             if (questionType.equalsIgnoreCase("skiq")){
                 currentGameScore += currentQuestion.returnPoints();
-                System.out.printf("Pontos Ski= " + currentGameScore);
             } else if (questionType.equalsIgnoreCase("swimmingq")){
                 currentGameScore += currentQuestion.returnPoints();
-                System.out.printf("Pontos Swimming= " + currentGameScore);
             }
         }
 

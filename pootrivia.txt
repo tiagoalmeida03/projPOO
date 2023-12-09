@@ -64,13 +64,13 @@ White Whale
 -Who won the FIFA Ballon d'Or in 2022?
 *Lionel Messi 10
 Cristiano Ronaldo 7
-Kylian Mbappé 7
+Kylian Mbappé 10
 Thibaut Courtois 1
 Fábio Coentão 5
 -Which player is known as "CR7"?
 Neymar Jr 10
 *Cristiano Ronaldo 7
-Antoine Griezmann 7
+Antoine Griezmann 17
 Mohamed Salah 11
 Hugo Almeida 9
 -Whose the most known player from Egypt?
@@ -89,7 +89,7 @@ Kylian Mbappé 7
 Lionel Messi 10
 *Antoine Griezmann 7
 Manuel Neuer 1
-Cristiano Ronaldo 7
+Cristiano Ronaldo 20
 Hugo Almeida 9
 #Ski:
 -Which country hosted the Winter Olympics in 2022?

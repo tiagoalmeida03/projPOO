@@ -123,7 +123,7 @@ public class Player implements Serializable {
             // Extract initials from the player's name
             String nameInitials = getInitials();
             // Construct the file name with timestamp and initials
-            String fileName = "/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO/ObjFolder/pootrivia_jogo_" + dateTime + "_" + nameInitials + ".dat";
+            String fileName = "/Users/tiagoalmeida/Library/CloudStorage/OneDrive-UniversidadedeCoimbra/UC/3º ANO/1º Semestre/POAO/projPOO/ObjFolder/pootrivia_jogo_" + dateTime + "_" + nameInitials + ".dat";
 
             try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
@@ -172,7 +172,7 @@ public class Player implements Serializable {
         List<Player> players = new ArrayList<>();
 
         // Specify the directory where object files are located
-        String directoryPath = "/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO/ObjFolder";
+        String directoryPath = "/Users/tiagoalmeida/Library/CloudStorage/OneDrive-UniversidadedeCoimbra/UC/3º ANO/1º Semestre/POAO/projPOO/ObjFolder";
         File directory = new File(directoryPath);
 
         // List all files in the directory
