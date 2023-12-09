@@ -21,21 +21,20 @@ public class POOTrivia extends JPanel {
 
     public POOTrivia() {
         // Load previous game results
-        //loadGameResults();
+        // loadGameResults();
 
         // Display the first panel
         firstPanel();
     }
 
-    public void startGame(){
+    public void startGame() {
     }
 
-    private void returnQuestions(String question){
+    private void returnQuestions(String question) {
 
     }
 
-    private void removeChar(String string){
-
+    private void removeChar(String string) {
 
     }
 
@@ -43,13 +42,14 @@ public class POOTrivia extends JPanel {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
-        JLabel welcomeLabel = new JLabel("<html><div style='text-align: center;'>Welcome to POOTrivia!!!<br>Please press the button to Start or Cancel the Game</div></html>");
+        JLabel welcomeLabel = new JLabel(
+                "<html><div style='text-align: center;'>Welcome to POOTrivia!!!<br>Please press the button to Start or Cancel the Game</div></html>");
         welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER); // Center align the label
         welcomeLabel.setFont(welcomeLabel.getFont().deriveFont(20f)); // Increase the font size
         panel.add(welcomeLabel, BorderLayout.CENTER); // Add the label to the center of the panel
 
         JButton startButton = new JButton("Start");
-        startButton.setForeground(Color.BLUE);
+        startButton.setForeground(Color.GREEN);
         startButton.setPreferredSize(new Dimension(80, 30));
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -89,7 +89,7 @@ public class POOTrivia extends JPanel {
         return panel;
     }
 
-    private void startComponents(){
+    private void startComponents() {
         questionLabel = new JLabel();
         scoreLabel = new JLabel();
         answerButtons = new JButton[5];
@@ -110,7 +110,7 @@ public class POOTrivia extends JPanel {
     private void loadQuestions() {
         List<List<Object>> rawQuestions = new ArrayList<>();
 
-        try  {
+        try {
             File file = new File("pootrivia.txt");
             if (!file.exists()) {
                 System.err.println("Error: File 'pootrivia.txt' not found.");
@@ -134,20 +134,20 @@ public class POOTrivia extends JPanel {
                 } else if (line.startsWith("-")) {
                     // It's a question
                     String question = line.substring(1).trim();
-                    //System.out.printf("  %s\n", question);
+                    // System.out.printf(" %s\n", question);
                     rawQuestions.get(rawQuestions.size() - 1).add(question);
 
                     // Read options
                     List<String> options = new ArrayList<>();
                     for (int j = 0; j < 5; j++) {
                         String option = scanner.nextLine().trim();
-                        if (option.substring(0,1).equalsIgnoreCase("*")){
+                        if (option.substring(0, 1).equalsIgnoreCase("*")) {
                             String correctAnswer = option.substring(1);
-                            //System.out.printf("    Correct Answer: %s\n", correctAnswer);
+                            // System.out.printf(" Correct Answer: %s\n", correctAnswer);
                             rawQuestions.get(rawQuestions.size() - 1).add(correctAnswer);
                             options.add(correctAnswer);
-                        }else {
-                            //System.out.printf("->    %s\n", option);
+                        } else {
+                            // System.out.printf("-> %s\n", option);
                             options.add(option);
                         }
                     }
@@ -170,10 +170,10 @@ public class POOTrivia extends JPanel {
                     Questions question;
                     if (questionType.startsWith("Arts")) {
                         question = new ArtsQ(questionText, questionOptions, correctAnswer);
-                        //System.out.printf("1 -> " + question.getQuestion());
+                        // System.out.printf("1 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Science")) {
                         question = new ScienceQ(questionText, questionOptions, correctAnswer);
-                        //System.out.printf("2 -> " + question.getQuestion());
+                        // System.out.printf("2 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Soccer")) {
                         question = new SoccerQ(questionText, questionOptions, correctAnswer);
                     } else if (questionType.startsWith("Ski")) {
@@ -192,7 +192,6 @@ public class POOTrivia extends JPanel {
             e.printStackTrace();
         }
     }
-
 
     private void loadGameResults() {
         gameResults = new ArrayList<>();
@@ -284,11 +283,11 @@ public class POOTrivia extends JPanel {
         leaderboard.append("Leaderboard:\n");
         for (int i = 0; i < Math.min(gameResults.size(), numberOfTopScores); i++) {
             GameResult gameResult = gameResults.get(i);
-            leaderboard.append(i + 1).append(". ").append(gameResult.getPlayer().getPlayerName()).append(": ").append(gameResult.getScore()).append("\n");
+            leaderboard.append(i + 1).append(". ").append(gameResult.getPlayer().getPlayerName()).append(": ")
+                    .append(gameResult.getScore()).append("\n");
         }
         JOptionPane.showMessageDialog(null, leaderboard.toString(), "Leaderboard", JOptionPane.INFORMATION_MESSAGE);
     }
-
 
     private List<GameResult> getGameResults() {
         return gameResults;
@@ -343,7 +342,8 @@ public class POOTrivia extends JPanel {
         // Check if playerName is null, meaning the Cancel button was pressed
         if (playerName == null) {
             // Ask for confirmation before exiting
-            int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit the game?", "Exit Confirmation", JOptionPane.YES_NO_OPTION);
+            int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit the game?",
+                    "Exit Confirmation", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
                 System.exit(0);
             } else {
@@ -361,7 +361,6 @@ public class POOTrivia extends JPanel {
             showLeaderboard(3);
         }
     }
-    
 
     private class AnswerButtonListener implements ActionListener {
         @Override
