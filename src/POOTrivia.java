@@ -11,7 +11,6 @@ import java.util.*;
 
 public class POOTrivia extends JPanel {
     private List<Questions> questions;
-    private List<GameResult> gameResults;
     private int currentQuestionIndex;
     private int currentGameScore;
 
@@ -19,23 +18,18 @@ public class POOTrivia extends JPanel {
     private JLabel questionLabel;
     private JLabel scoreLabel;
 
-    public POOTrivia() {
-        // Load previous game results
-        // loadGameResults();
+    private JButton trueButton;
+    private JButton falseButton;
 
+    public POOTrivia() {
         // Display the first panel
         firstPanel();
-    }
 
-    public void startGame() {
-    }
+        trueButton = new JButton("True");
+        falseButton = new JButton("False");
 
-    private void returnQuestions(String question) {
-
-    }
-
-    private void removeChar(String string) {
-
+        trueButton.addActionListener(new TrueFalseButtonListener(true));
+        falseButton.addActionListener(new TrueFalseButtonListener(false));
     }
 
     public JPanel firstPanel() {
@@ -105,6 +99,26 @@ public class POOTrivia extends JPanel {
             add(button);
         }
         add(scoreLabel);
+
+        // Add True/False buttons to the panel
+        JPanel trueFalsePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        trueFalsePanel.add(trueButton);
+        trueFalsePanel.add(falseButton);
+        add(trueFalsePanel);
+    }
+
+    private class TrueFalseButtonListener implements ActionListener {
+        private boolean isTrue;
+
+        public TrueFalseButtonListener(boolean isTrue) {
+            this.isTrue = isTrue;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Handle the True/False button click
+            handleTrueFalseButtonClick(isTrue);
+        }
     }
 
     private void loadQuestions() {
@@ -170,10 +184,10 @@ public class POOTrivia extends JPanel {
                     Questions question;
                     if (questionType.startsWith("Arts")) {
                         question = new ArtsQ(questionText, questionOptions, correctAnswer);
-                        // System.out.printf("1 -> " + question.getQuestion());
+                        //System.out.printf("1 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Science")) {
                         question = new ScienceQ(questionText, questionOptions, correctAnswer);
-                        // System.out.printf("2 -> " + question.getQuestion());
+                        //System.out.printf("2 -> " + question.getQuestion());
                     } else if (questionType.startsWith("Soccer")) {
                         question = new SoccerQ(questionText, questionOptions, correctAnswer);
                     } else if (questionType.startsWith("Ski")) {
@@ -193,124 +207,86 @@ public class POOTrivia extends JPanel {
         }
     }
 
-    private void loadGameResults() {
-        gameResults = new ArrayList<>();
-
-        try {
-            File file = new File("game_results.obj");
-
-            if (!file.exists()) {
-                System.err.println("Error: File 'game_results.obj' not found.");
-                return; // Exit the method if the file doesn't exist
-            }
-
-            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
-                Object obj = objectInputStream.readObject();
-                if (obj instanceof List<?>) {
-                    List<?> rawList = (List<?>) obj;
-
-                    // Check if the elements in the list are of type GameResult
-                    if (!rawList.isEmpty() && rawList.get(0) instanceof GameResult) {
-                        List<GameResult> gameResults = new ArrayList<>();
-                        for (Object element : rawList) {
-                            gameResults.add((GameResult) element);
-                        }
-                        this.gameResults = gameResults;
-                    } else {
-                        System.err.println("Error: Unexpected element type in 'game_results.obj'.");
-                    }
-                } else {
-                    System.err.println("Error: Unexpected object type in 'game_results.obj'.");
-                }
-            }
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void saveGameResult(GameResult gameResult) {
-        try {
-            File file = new File("game_results.obj");
-
-            if (!file.exists()) {
-                System.err.println("Error: File 'game_results.obj' not found.");
-                return; // Exit the method if the file doesn't exist
-            }
-
-            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
-                Object obj = objectInputStream.readObject();
-                if (obj instanceof List<?>) {
-                    List<?> rawList = (List<?>) obj;
-
-                    // Check if the elements in the list are of type GameResult
-                    if (!rawList.isEmpty() && rawList.get(0) instanceof GameResult) {
-                        List<GameResult> gameResults = new ArrayList<>();
-                        for (Object element : rawList) {
-                            gameResults.add((GameResult) element);
-                        }
-                        this.gameResults = gameResults;
-                    } else {
-                        System.err.println("Error: Unexpected element type in 'game_results.obj'.");
-                    }
-                } else {
-                    System.err.println("Error: Unexpected object type in 'game_results.obj'.");
-                }
-            }
-
-            // Add the new game result
-            gameResults.add(gameResult);
-
-            // Save the updated list of game results
-            try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
-                objectOutputStream.writeObject(gameResults);
-            }
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showLeaderboard(int numberOfTopScores) {
-        // Retrieve the game results from the list
-        List<GameResult> gameResults = getGameResults();
-
-        // Sort the game results based on the scores
-        Collections.sort(gameResults, Comparator.comparingInt(GameResult::getScore).reversed());
-
-        // Display the leaderboard with player names and scores
-        StringBuilder leaderboard = new StringBuilder();
-        leaderboard.append("Leaderboard:\n");
-        for (int i = 0; i < Math.min(gameResults.size(), numberOfTopScores); i++) {
-            GameResult gameResult = gameResults.get(i);
-            leaderboard.append(i + 1).append(". ").append(gameResult.getPlayer().getPlayerName()).append(": ")
-                    .append(gameResult.getScore()).append("\n");
-        }
-        JOptionPane.showMessageDialog(null, leaderboard.toString(), "Leaderboard", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    private List<GameResult> getGameResults() {
-        return gameResults;
-    }
-
     private void startNewGame() {
         currentQuestionIndex = 0;
         currentGameScore = 0;
         Collections.shuffle(questions); // Shuffle questions for each new game
         displayNextQuestion();
-    }
+    }    
 
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
             Questions question = questions.get(currentQuestionIndex);
-            questionLabel.setText(question.getQuestion());
-
+    
+            // Clear existing components
+            removeAll();
+    
+            // Display the question text centered with a larger font and line wrap
+            String questionText = "<html><div style='text-align: center; width: 400px;'>" + question.getQuestion() + "</div></html>";
+            JLabel questionTextLabel = new JLabel(questionText);
+            questionTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            questionTextLabel.setFont(questionTextLabel.getFont().deriveFont(18f)); // Set a larger font size
+            add(questionTextLabel);
+    
             List<String> answers = question.getAnswers();
-            for (int i = 0; i < answerButtons.length; i++) {
-                answerButtons[i].setText(answers.get(i));
+    
+            if (question instanceof SkiQ || question instanceof SwimmingQ) {
+                // Display only one random option for Ski and Swimming questions
+                Collections.shuffle(answers);
+    
+                // Display the selected option without a button, centered with a larger font
+                String selectedOption = answers.get(0);
+                JLabel selectedOptionLabel = new JLabel(selectedOption);
+                selectedOptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                selectedOptionLabel.setFont(selectedOptionLabel.getFont().deriveFont(18f)); // Set a larger font size
+                add(selectedOptionLabel);
+            } else {
+                // Display all options for other types of questions
+                for (int i = 0; i < answerButtons.length; i++) {
+                    answerButtons[i].setText(answers.get(i));
+                    answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
+                    add(answerButtons[i]);
+                }
             }
-
+    
+            // Add True/False buttons for Ski and Swimming questions
+            if (question instanceof SkiQ || question instanceof SwimmingQ) {
+                JPanel trueFalsePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+                trueFalsePanel.add(trueButton);
+                trueFalsePanel.add(falseButton);
+                add(trueFalsePanel);
+            }
+    
             currentQuestionIndex++;
+            revalidate();
+            repaint();
+        } else {
+            endGame();
+        }
+    } 
+    
+
+    private void handleTrueFalseButtonClick(boolean selectedAnswer) {
+        // Check if the selected answer is correct for True/False questions
+        Questions currentQuestion = questions.get(currentQuestionIndex - 1);
+        boolean isCorrectAnswer = currentQuestion.isTrueFalseCorrect(selectedAnswer);
+        
+        Player player = new Player("temp");
+
+        //TODO:
+        // Increment the game score for correct answers
+        if (isCorrectAnswer) {
+            player.addCorrectQuestion(questionLabel.getText());
+            currentGameScore++;
+        }
+
+        else if(!isCorrectAnswer) {
+            player.addCorrectQuestion(questionLabel.getText());
+        }
+
+        // Display the next question or end the game
+        if (currentQuestionIndex < questions.size()) {
+            displayNextQuestion();
         } else {
             endGame();
         }
@@ -333,12 +309,15 @@ public class POOTrivia extends JPanel {
     }
 
     private void endGame() {
+        // Dispose the main panel
+        SwingUtilities.getWindowAncestor(this).dispose();
+    
         // Show final score
         JOptionPane.showMessageDialog(this, "Game Over! Your final score is: " + currentGameScore);
-
+    
         // Prompt for player's name
         String playerName = JOptionPane.showInputDialog(this, "Enter your name:");
-
+    
         // Check if playerName is null, meaning the Cancel button was pressed
         if (playerName == null) {
             // Ask for confirmation before exiting
@@ -352,14 +331,58 @@ public class POOTrivia extends JPanel {
             }
         } else {
             // Continue with the normal flow
-            GameResult gameResult = new GameResult(new Player(playerName), new ArrayList<>(), new ArrayList<>());
+            Player player = new Player(playerName);
+    
+            // Save the correct and incorrect questions
+            for (Questions question : questions) {
+                if (question.isCorrectAnswer(playerName)) {
+                    player.addCorrectQuestion(question.getQuestion());
+                } else {
+                    player.addIncorrectQuestion(question.getQuestion());
+                }
+            }
+    
+            // Call createObjectFile to save player's information to the object file
+            player.createObjectFile();
 
-            // Save the game result
-            saveGameResult(gameResult);
+            // Show the top 3 players
+            leaderBoard();
 
-            // Show leaderboard
-            showLeaderboard(3);
+            // Exit the game
+            System.exit(0);
         }
+    }
+    
+    public void leaderBoard() {
+        // Obtém a lista dos melhores jogadores
+        List<Player> topPlayers = Player.getTopPlayers();
+
+        StringBuilder topPlayersInfo = new StringBuilder("Top 3 Players:\n");
+        // Max 3 Jogadores
+        int count = Math.min(3, topPlayers.size());
+
+        for (int i = 0; i < count; i++) {
+            // Jogador atual
+            Player player = topPlayers.get(i);
+            // Info sobre Jogador - nome, socre
+            topPlayersInfo.append((i + 1) + ". " + player.getPlayerName() + " - Score: " + player.getScore() + "\n");
+            // Perguntas
+            topPlayersInfo.append("Right Answers:\n");
+            for (String pergunta : player.getCorrectQuestions()) {
+                topPlayersInfo.append("- " + pergunta + "\n");
+            }
+            topPlayersInfo.append("Wrong Answers:\n");
+            for (String pergunta : player.getIncorrectQuestions()) {
+                topPlayersInfo.append("- " + pergunta + "\n");
+            }
+            topPlayersInfo.append("\n");
+        }
+        // Cria caixa de texto com a informacao a mostrar
+        JTextArea topPlayersTextArea = new JTextArea(topPlayersInfo.toString());
+        topPlayersTextArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(topPlayersTextArea);
+
+        JOptionPane.showMessageDialog(this, scrollPane, "Top 3 Players", JOptionPane.PLAIN_MESSAGE);
     }
 
     private class AnswerButtonListener implements ActionListener {

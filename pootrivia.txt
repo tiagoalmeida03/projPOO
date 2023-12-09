@@ -92,34 +92,64 @@ Manuel Neuer 1
 Cristiano Ronaldo 7
 Hugo Almeida 9
 #Ski:
--China hosted the Winter Olympics in 2022.
-*True
-False
--Bode Miller is considered the greatest alpine skier of all time.
-True
-*False
--In ski jumping, V Position is the term for the position a ski jumper assumes in the air to maximize distance.
-*True
-False
--Nordic combined is the type of skiing involves navigating a downhill course marked with a series of gates.
-True
-*False
--"FIS" stands for Freestyle International Skiing.
-True
-*False
+-Which country hosted the Winter Olympics in 2022?
+Canada
+USA
+*China
+Norway
+Sweden
+-Who is considered the greatest alpine skier of all time, with numerous Olympic and World Championship titles?
+Bode Miller
+Aksel Lund Svindal
+Mikaela Shiffrin
+*Lindsey Vonn
+John Curie
+-In ski jumping, what is the term for the position a ski jumper assumes in the air to maximize distance?
+Tuck Position
+Pike Position
+*V Position
+Spread-eagle Popsition
+I Position
+-Which type of skiing involves navigating a downhill course marked with a series of gates?
+Freestyle skiing
+*Alpine skiing
+Cross-country Skiing
+Nordic combined
+Switzerland Skiing
+-What does the acronym "FIS" stand for in the context of skiing?
+Freestyle International Skiing
+*Fédération Internationale de Ski
+Freestyle Ice Skating
+Winter Sports Federation
+International Ski Federation
 #Swimming:
--Michael Phelps holds the world record for the men's 100m freestyle.
-True
-*False
--Backstroke is the stoke that swimmers perform a dolphin kick and use both arms simultaneously in a butterfly motion.
-True
-*False
--Simone Manuel is the female swimmer who won four gold medals in the 2016 Rio Olympics.
-*True
-False
--The distance of the men's longest competitive swimming event in the Olympics is 1500 meters.
-*True
-False
--Katie Ledechy is often referred to as the "Flying Fish".
-True
-*False
+-Who holds the world record for the men's 100m freestyle?
+Michael Phelps
+*César Cielo
+Ryan Lochte
+Adam Peaty
+John Alpes
+-In which stroke do swimmers perform a dolphin kick and use both arms simultaneously in a butterfly motion?
+Backstroke
+*Butterfly
+Breaststroke
+Freestyle
+Dog Style
+-Which female swimmer won four gold medals in the 2016 Rio Olympics, dominating the freestyle and individual medley events?
+Missy Franklin
+Katie Ledecky
+*Simone Manuel
+Sarah Sjöström
+Antonie Florentine
+-What is the distance of the men's longest competitive swimming event in the Olympics?
+500 meters
+800 meters
+1000 meters
+*1500 meters
+2000 meters
+-Who is often referred to as the "Flying Fish" and set multiple world records in the 100m and 200m freestyle events?
+Katie Ledecky
+Missy Franklin
+*Cesar Cielo
+Sun Yang
+Michael Phelps
