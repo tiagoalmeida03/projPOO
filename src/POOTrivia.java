@@ -1,9 +1,12 @@
 import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.lang.invoke.StringConcatFactory;
 import java.util.*;
 
 public class POOTrivia extends JPanel {
@@ -20,28 +23,8 @@ public class POOTrivia extends JPanel {
         // Load previous game results
         //loadGameResults();
 
-        // Initialize GUI components
-        questionLabel = new JLabel();
-        scoreLabel = new JLabel();
-        answerButtons = new JButton[4];
-        for (int i = 0; i < answerButtons.length; i++) {
-            answerButtons[i] = new JButton();
-            answerButtons[i].addActionListener(new AnswerButtonListener());
-        }
-
-        // Add GUI components to the panel
-        setLayout(new GridLayout(6, 1));
-        add(questionLabel);
-        for (JButton button : answerButtons) {
-            add(button);
-        }
-        add(scoreLabel);
-
-        // Load questions from the file
-        loadQuestions();
-
-        // Start a new game
-        startNewGame(); //TODO:
+        // Display the first panel
+        firstPanel();
     }
 
     public void startGame(){
@@ -54,6 +37,76 @@ public class POOTrivia extends JPanel {
     private void removeChar(String string){
 
 
+    }
+
+    public JPanel firstPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        JLabel welcomeLabel = new JLabel("<html><div style='text-align: center;'>Welcome to POOTrivia!!!<br>Please press the button to Start or Cancel the Game</div></html>");
+        welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER); // Center align the label
+        welcomeLabel.setFont(welcomeLabel.getFont().deriveFont(20f)); // Increase the font size
+        panel.add(welcomeLabel, BorderLayout.CENTER); // Add the label to the center of the panel
+
+        JButton startButton = new JButton("Start");
+        startButton.setBackground(new Color(135, 206, 250));
+        startButton.setForeground(Color.WHITE);
+        startButton.setPreferredSize(new Dimension(80, 30));
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Add your logic for the Start button here
+                System.out.println("Game Started!");
+
+                // Create a new instance of POOTrivia
+                POOTrivia.this.startComponents();
+                POOTrivia.this.loadQuestions();
+                POOTrivia.this.startNewGame();
+
+                // Set the POOTrivia panel visible
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panel);
+                frame.getContentPane().removeAll();
+                frame.add(POOTrivia.this);
+                frame.revalidate();
+                frame.repaint();
+            }
+        });
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBackground(Color.GRAY);
+        cancelButton.setPreferredSize(new Dimension(80, 30)); // Set button size
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Add your logic for the Cancel button here
+                System.out.println("Game Canceled.");
+                System.exit(0);
+            }
+        });
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT)); // Align buttons to the right
+        buttonPanel.add(cancelButton);
+        buttonPanel.add(startButton);
+
+        panel.add(buttonPanel, BorderLayout.SOUTH); // Align buttons to the bottom
+
+        return panel;
+    }
+
+    private void startComponents(){
+        questionLabel = new JLabel();
+        scoreLabel = new JLabel();
+        answerButtons = new JButton[5];
+        for (int i = 0; i < answerButtons.length; i++) {
+            answerButtons[i] = new JButton();
+            answerButtons[i].addActionListener(new AnswerButtonListener());
+        }
+
+        // Add GUI components to the panel
+        setLayout(new GridLayout(6, 1));
+        add(questionLabel);
+        for (JButton button : answerButtons) {
+            add(button);
+        }
+        add(scoreLabel);
     }
 
     private void loadQuestions() {
@@ -288,16 +341,29 @@ public class POOTrivia extends JPanel {
 
         // Prompt for player's name
         String playerName = JOptionPane.showInputDialog(this, "Enter your name:");
-        //TODO: Quando se clica no x para fechar a aba deve perguntar se tem a certeza que deseja sair, se sim acaba o programa todo,
-        // se nao deve voltar a onde estava
-        GameResult gameResult = new GameResult(new Player(playerName), new ArrayList<>(), new ArrayList<>());
 
-        // Save the game result
-        saveGameResult(gameResult);
+        // Check if playerName is null, meaning the Cancel button was pressed
+        if (playerName == null) {
+            // Ask for confirmation before exiting
+            int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit the game?", "Exit Confirmation", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            } else {
+                // If the player chooses not to exit, show the name input panel again
+                endGame();
+            }
+        } else {
+            // Continue with the normal flow
+            GameResult gameResult = new GameResult(new Player(playerName), new ArrayList<>(), new ArrayList<>());
 
-        // Show leaderboard
-        showLeaderboard(3);
+            // Save the game result
+            saveGameResult(gameResult);
+
+            // Show leaderboard
+            showLeaderboard(3);
+        }
     }
+    
 
     private class AnswerButtonListener implements ActionListener {
         @Override
