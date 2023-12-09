@@ -59,7 +59,7 @@ public class Player implements Serializable {
         try {
             String dateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
             String nameInitials = getInitials();
-            String fileName = "/Users/tiagoalmeida/Library/CloudStorage/OneDrive-UniversidadedeCoimbra/UC/3º ANO/1º Semestre/POAO/projPOO/ObjFolder/pootrivia_jogo_" + dateTime + "_" + nameInitials + ".dat";
+            String fileName = "/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO/ObjFolder/pootrivia_jogo_" + dateTime + "_" + nameInitials + ".dat";
 
             try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
@@ -96,7 +96,7 @@ public class Player implements Serializable {
         List<Player> players = new ArrayList<>();
     
         // Specify the directory where object files are located
-        String directoryPath = "/Users/tiagoalmeida/Library/CloudStorage/OneDrive-UniversidadedeCoimbra/UC/3º ANO/1º Semestre/POAO/projPOO/ObjFolder";
+        String directoryPath = "/Users/joaotomasquerido/Documents/LEI/3 ANO/POO/projPOO/ObjFolder";
         File directory = new File(directoryPath);
     
         // List all files in the directory
@@ -129,7 +129,7 @@ public class Player implements Serializable {
                 Player player = players.get(i);
                 System.out.println("Player: " + player.getPlayerName() + ", Score: " + player.getScore());
             }
-    
+
             return players;
         } else {
             System.out.println("No objects found in the directory...");

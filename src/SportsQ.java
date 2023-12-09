@@ -17,10 +17,7 @@ public abstract class SportsQ extends Questions {
         return answer.equals(correctAnswer);
     }
 
-    @Override
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
+    public abstract int returnPoints();
 
     @Override
     public List<String> getSublistOptions() {

@@ -11,7 +11,6 @@ public class ScienceQ extends Questions {
     public String questionType() {
         return "Science";
     }
-
     @Override
     public String getQuestion() {
         return textQuestion;
@@ -26,10 +25,16 @@ public class ScienceQ extends Questions {
     public boolean isCorrectAnswer(String answer) {
         return answer.equals(correctAnswer);
     }
-
     @Override
     public String getCorrectAnswer() {
         return correctAnswer;
+    }
+    @Override
+    public int returnPoints (){
+
+        points = 5 + 5;
+
+        return points;
     }
 
     @Override

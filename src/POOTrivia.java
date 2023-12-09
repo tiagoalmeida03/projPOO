@@ -212,7 +212,7 @@ public class POOTrivia extends JPanel {
         currentGameScore = 0;
         Collections.shuffle(questions); // Shuffle questions for each new game
         displayNextQuestion();
-    }    
+    }
 
     private void displayNextQuestion() {
         if (currentQuestionIndex < 5) {
@@ -237,16 +237,20 @@ public class POOTrivia extends JPanel {
 
                 if (currentQuestionIndex < 3) {
                     // If it's one of the first three questions, display only three options
-                    for (int i = 0; i < 2; i++) {
+                    for (int i = 0; i < 3; i++) {
                         answerButtons[i].setText(answers.get(i));
                         answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
                         add(answerButtons[i]);
                         System.out.println("Answers chosen: " + answers.get(i));
                     }
 
-                    answerButtons[2].setText(question.getCorrectAnswer());
-                    answerButtons[2].setFont(answerButtons[2].getFont().deriveFont(18f)); // Set a larger font size
-                    add(answerButtons[2]);
+                    if (answers.get(0) != question.getCorrectAnswer() && answers.get(1) != question.getCorrectAnswer() && answers.get(2) != question.getCorrectAnswer()){
+                        Random random = new Random();
+                        int randomIndex = random.nextInt(3);
+                        answerButtons[randomIndex].setText(question.getCorrectAnswer());
+                        answerButtons[randomIndex].setFont(answerButtons[randomIndex].getFont().deriveFont(18f)); // Set a larger font size
+                        add(answerButtons[randomIndex]);
+                    }
 
                 } else {
                     // If it's the fourth or fifth question, display all five options
@@ -268,10 +272,14 @@ public class POOTrivia extends JPanel {
                         add(answerButtons[i]);
                         System.out.println("Answers chosen: " + answers.get(i));
                     }
-                    
-                    answerButtons[0].setText(question.getCorrectAnswer());
-                    answerButtons[0].setFont(answerButtons[0].getFont().deriveFont(18f)); // Set a larger font size
-                    add(answerButtons[0]);
+
+                    if (answers.get(0) != question.getCorrectAnswer() && answers.get(1) != question.getCorrectAnswer() && answers.get(2) != question.getCorrectAnswer()){
+                        Random random = new Random();
+                        int randomIndex = random.nextInt(3);
+                        answerButtons[randomIndex].setText(question.getCorrectAnswer());
+                        answerButtons[randomIndex].setFont(answerButtons[randomIndex].getFont().deriveFont(18f)); // Set a larger font size
+                        add(answerButtons[randomIndex]);
+                    }
 
                 } else {
                     // If it's the fourth or fifth question, display all five options
@@ -306,8 +314,7 @@ public class POOTrivia extends JPanel {
             endGame();
         }
     }
-    
-    
+
     // Helper method to get the name from a Soccer option
     private String getNameFromSoccerOption(String soccerOption) {
         String[] parts = soccerOption.split(" ");
@@ -316,25 +323,30 @@ public class POOTrivia extends JPanel {
         // Join the parts back together
         return String.join(" ", allExceptLast);
     }
-    
+
     // Helper method to get the shirt number from a Soccer option
     private String getNumShirtFromSoccerOption(String soccerOption) {
         String[] parts = soccerOption.split(" ");
         return parts[parts.length - 1];
     }
-    
+
     private void handleTrueFalseButtonClick(boolean selectedAnswer) {
         // Check if the selected answer is correct for True/False questions
         Questions currentQuestion = questions.get(currentQuestionIndex - 1);
         boolean isCorrectAnswer = currentQuestion.isTrueFalseCorrect(selectedAnswer);
-        
         Player player = new Player("temp");
 
-        //TODO:
-        // Increment the game score for correct answers
         if (isCorrectAnswer) {
             player.addCorrectQuestion(questionLabel.getText());
-            currentGameScore++;
+            String questionType = currentQuestion.toString();
+            questionType = questionType.substring(0, questionType.indexOf("@"));
+            if (questionType.equalsIgnoreCase("skiq")){
+                currentGameScore += currentQuestion.returnPoints();
+                System.out.printf("Pontos Ski= " + currentGameScore);
+            } else if (questionType.equalsIgnoreCase("swimmingq")){
+                currentGameScore += currentQuestion.returnPoints();
+                System.out.printf("Pontos Swimming= " + currentGameScore);
+            }
         }
 
         else if(!isCorrectAnswer) {
@@ -352,9 +364,17 @@ public class POOTrivia extends JPanel {
     private void handleAnswerSubmission(String selectedAnswer) {
         // Check if the selected answer is correct
         Questions currentQuestion = questions.get(currentQuestionIndex - 1);
+        String questionType = currentQuestion.toString();
+        questionType = questionType.substring(0, questionType.indexOf("@"));
+
         if (currentQuestion.isCorrectAnswer(selectedAnswer)) {
-            // Increment the game score
-            currentGameScore++;
+            if (questionType.equalsIgnoreCase("soccerq")){
+                currentGameScore += currentQuestion.returnPoints();
+            } else if (questionType.equalsIgnoreCase("artsq")) {
+                currentGameScore += currentQuestion.returnPoints();
+            } else if (questionType.equalsIgnoreCase("scienceq")){
+                currentGameScore += currentQuestion.returnPoints();
+            }
         }
 
         // Display the next question or end the game

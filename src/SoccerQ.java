@@ -6,12 +6,10 @@ public class SoccerQ extends SportsQ {
     public SoccerQ(String text, List<String> options, String correctAnswer) {
         super(text, options, correctAnswer);
     }
-
     @Override
     public String questionType() {
         return "Soccer";
     }
-
     @Override
     public List<String> getAnswers() {
         return options;
@@ -21,10 +19,16 @@ public class SoccerQ extends SportsQ {
     public boolean isCorrectAnswer(String answer) {
         return answer.equals(correctAnswer);
     }
-
     @Override
     public String getCorrectAnswer() {
         return correctAnswer;
+    }
+    @Override
+    public int returnPoints (){
+
+        points = 5 + 3 + 1;
+
+        return points;
     }
 
     @Override

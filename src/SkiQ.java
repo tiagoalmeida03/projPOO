@@ -11,7 +11,6 @@ public class SkiQ extends SportsQ {
     public String questionType() {
         return "Ski";
     }
-
     @Override
     public List<String> getAnswers() {
         return options;
@@ -21,18 +20,23 @@ public class SkiQ extends SportsQ {
     public boolean isCorrectAnswer(String answer) {
         return answer.equals(correctAnswer);
     }
-
     @Override
     public String getCorrectAnswer() {
         return correctAnswer;
     }
-
     @Override
     public List<String> getSublistOptions() {
         // Create a sublist with three options, including the correct answer
         List<String> sublistOptions = new ArrayList<>(options);
         Collections.shuffle(sublistOptions); // Shuffle the options
         return sublistOptions.subList(0, 3); // Take the first three options
+    }
+    @Override
+    public int returnPoints (){
+
+        points = (5 + 3) * 2;
+
+        return points;
     }
 
     @Override

@@ -4,6 +4,7 @@ public abstract class Questions {
     protected String textQuestion;
     protected List<String> options;
     protected String correctAnswer;
+    protected int points;
 
     public Questions(String text, List<String> options, String correctAnswer) {
         this.textQuestion = text;
@@ -11,9 +12,7 @@ public abstract class Questions {
         this.correctAnswer = correctAnswer;
     }
 
-    public String questionType() {
-        return null;
-    }
+    public String questionType(){return null;}
 
     public String getQuestion() {
         return textQuestion;
@@ -36,6 +35,8 @@ public abstract class Questions {
     public abstract List<String> getAnswers();
 
     public abstract boolean isCorrectAnswer(String answer);
+
+    public abstract int returnPoints();
 
     public abstract List<String> getSublistOptions();
 }

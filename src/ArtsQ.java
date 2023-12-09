@@ -33,6 +33,12 @@ public class ArtsQ extends Questions {
     }
 
     @Override
+    public int returnPoints (){
+        points = 5 * 10;
+        return points;
+    }
+
+    @Override
     public List<String> getSublistOptions() {
         // Create a sublist with three options, including the correct answer
         List<String> sublistOptions = new ArrayList<>(options);
