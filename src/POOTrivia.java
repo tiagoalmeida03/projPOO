@@ -49,8 +49,7 @@ public class POOTrivia extends JPanel {
         panel.add(welcomeLabel, BorderLayout.CENTER); // Add the label to the center of the panel
 
         JButton startButton = new JButton("Start");
-        startButton.setBackground(new Color(135, 206, 250));
-        startButton.setForeground(Color.WHITE);
+        startButton.setForeground(Color.BLUE);
         startButton.setPreferredSize(new Dimension(80, 30));
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -72,7 +71,6 @@ public class POOTrivia extends JPanel {
         });
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBackground(Color.GRAY);
         cancelButton.setPreferredSize(new Dimension(80, 30)); // Set button size
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
