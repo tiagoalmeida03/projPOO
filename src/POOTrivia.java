@@ -230,23 +230,68 @@ public class POOTrivia extends JPanel {
     
             List<String> answers = question.getAnswers();
     
-            if (question instanceof SkiQ || question instanceof SwimmingQ) {
-                // Display only one random option for Ski and Swimming questions
+            if (!(question instanceof SkiQ || question instanceof SwimmingQ || question instanceof SoccerQ)) {
+                // For answer submission questions, display only three options
+                // Shuffle the options
                 Collections.shuffle(answers);
-    
-                // Display the selected option without a button, centered with a larger font
-                String selectedOption = answers.get(0);
+
+                if (currentQuestionIndex < 3) {
+                    // If it's one of the first three questions, display only three options
+                    for (int i = 0; i < 3; i++) {
+                        answerButtons[i].setText(answers.get(i));
+                        answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
+                        add(answerButtons[i]);
+                    }
+
+                    // Ensure the correct answer is included
+                    if (!answers.contains(question.getCorrectAnswer())) {
+                        // If not, replace one of the options with the correct answer
+                        int indexOfReplacement = new Random().nextInt(3);
+                        answers.set(indexOfReplacement, question.getCorrectAnswer());
+                    }
+
+                } else {
+                    // If it's the fourth or fifth question, display all five options
+                    for (int i = 0; i < 5; i++) {
+                        answerButtons[i].setText(answers.get(i));
+                        answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
+                        add(answerButtons[i]);
+                    }
+                }
+            } else if (question instanceof SoccerQ) {
+                // For SoccerQ questions, display the correct answer as one of the options
+                Collections.shuffle(answers);
+                
+                if (currentQuestionIndex < 3){
+                    // If it's one of the first three questions, display only three options
+                    for (int i = 0; i < 3; i++) {
+                        answerButtons[i].setText(getNameFromSoccerOption(answers.get(i)));
+                        answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
+                        add(answerButtons[i]);
+                    }
+                    
+                    // Ensure the correct answer is included
+                    if (!answers.contains(question.getCorrectAnswer())) {
+                        // If not, replace one of the options with the correct answer
+                        int indexOfReplacement = new Random().nextInt(3);
+                        answers.set(indexOfReplacement, question.getCorrectAnswer());
+                    }
+                } else {
+                    // If it's the fourth or fifth question, display all five options
+                    for (int i = 0; i < 5; i++) {
+                        answerButtons[i].setText(getNumShirtFromSoccerOption(answers.get(i)));
+                        answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
+                        add(answerButtons[i]);
+                    }
+                }
+            } else {
+                // For Ski and Swimming questions, display the selected option without buttons
+                Collections.shuffle(answers);
+                String selectedOption = question.getCorrectAnswer(); // Display the correct answer
                 JLabel selectedOptionLabel = new JLabel(selectedOption);
                 selectedOptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 selectedOptionLabel.setFont(selectedOptionLabel.getFont().deriveFont(18f)); // Set a larger font size
                 add(selectedOptionLabel);
-            } else {
-                // Display all options for other types of questions
-                for (int i = 0; i < answerButtons.length; i++) {
-                    answerButtons[i].setText(answers.get(i));
-                    answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
-                    add(answerButtons[i]);
-                }
             }
     
             // Add True/False buttons for Ski and Swimming questions
@@ -263,9 +308,24 @@ public class POOTrivia extends JPanel {
         } else {
             endGame();
         }
-    } 
+    }
     
-
+    
+    // Helper method to get the name from a Soccer option
+    private String getNameFromSoccerOption(String soccerOption) {
+        String[] parts = soccerOption.split(" ");
+        // Exclude the last part
+        String[] allExceptLast = Arrays.copyOfRange(parts, 0, parts.length - 1);
+        // Join the parts back together
+        return String.join(" ", allExceptLast);
+    }
+    
+    // Helper method to get the shirt number from a Soccer option
+    private String getNumShirtFromSoccerOption(String soccerOption) {
+        String[] parts = soccerOption.split(" ");
+        return parts[parts.length - 1];
+    }
+    
     private void handleTrueFalseButtonClick(boolean selectedAnswer) {
         // Check if the selected answer is correct for True/False questions
         Questions currentQuestion = questions.get(currentQuestionIndex - 1);

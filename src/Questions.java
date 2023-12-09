@@ -19,6 +19,10 @@ public abstract class Questions {
         return options;
     }
 
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
     public boolean isTrueFalseCorrect(boolean selectedAnswer) {
         // Default implementation for non-True/False questions
         return selectedAnswer && correctAnswer.equalsIgnoreCase("True")

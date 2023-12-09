@@ -23,6 +23,11 @@ public class ArtsQ extends Questions {
     }
 
     @Override
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    @Override
     public List<String> getSublistOptions() {
         // Create a sublist with three options, including the correct answer
         List<String> sublistOptions = new ArrayList<>(options);
