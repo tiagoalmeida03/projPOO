@@ -237,18 +237,16 @@ public class POOTrivia extends JPanel {
 
                 if (currentQuestionIndex < 3) {
                     // If it's one of the first three questions, display only three options
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 0; i < 2; i++) {
                         answerButtons[i].setText(answers.get(i));
                         answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
                         add(answerButtons[i]);
+                        System.out.println("Answers chosen: " + answers.get(i));
                     }
 
-                    // Ensure the correct answer is included
-                    if (!answers.contains(question.getCorrectAnswer())) {
-                        // If not, replace one of the options with the correct answer
-                        int indexOfReplacement = new Random().nextInt(3);
-                        answers.set(indexOfReplacement, question.getCorrectAnswer());
-                    }
+                    answerButtons[2].setText(question.getCorrectAnswer());
+                    answerButtons[2].setFont(answerButtons[2].getFont().deriveFont(18f)); // Set a larger font size
+                    add(answerButtons[2]);
 
                 } else {
                     // If it's the fourth or fifth question, display all five options
@@ -264,18 +262,17 @@ public class POOTrivia extends JPanel {
                 
                 if (currentQuestionIndex < 3){
                     // If it's one of the first three questions, display only three options
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 1; i < 3; i++) {
                         answerButtons[i].setText(getNameFromSoccerOption(answers.get(i)));
                         answerButtons[i].setFont(answerButtons[i].getFont().deriveFont(18f)); // Set a larger font size
                         add(answerButtons[i]);
+                        System.out.println("Answers chosen: " + answers.get(i));
                     }
                     
-                    // Ensure the correct answer is included
-                    if (!answers.contains(question.getCorrectAnswer())) {
-                        // If not, replace one of the options with the correct answer
-                        int indexOfReplacement = new Random().nextInt(3);
-                        answers.set(indexOfReplacement, question.getCorrectAnswer());
-                    }
+                    answerButtons[0].setText(question.getCorrectAnswer());
+                    answerButtons[0].setFont(answerButtons[0].getFont().deriveFont(18f)); // Set a larger font size
+                    add(answerButtons[0]);
+
                 } else {
                     // If it's the fourth or fifth question, display all five options
                     for (int i = 0; i < 5; i++) {
