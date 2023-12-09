@@ -8,6 +8,11 @@ public class SwimmingQ extends SportsQ {
     }
 
     @Override
+    public String questionType() {
+        return "Swimming";
+    }
+
+    @Override
     public List<String> getAnswers() {
         return options;
     }

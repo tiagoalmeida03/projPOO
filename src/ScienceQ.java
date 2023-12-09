@@ -8,6 +8,11 @@ public class ScienceQ extends Questions {
     }
 
     @Override
+    public String questionType() {
+        return "Science";
+    }
+
+    @Override
     public String getQuestion() {
         return textQuestion;
     }

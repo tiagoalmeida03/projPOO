@@ -230,7 +230,7 @@ public class POOTrivia extends JPanel {
     
             List<String> answers = question.getAnswers();
     
-            if (!(question instanceof SkiQ || question instanceof SwimmingQ || question instanceof SoccerQ)) {
+            if (!(question.questionType().equals("Ski") || question.questionType().equals("Swimming") || question.questionType().equals("Soccer"))) {
                 // For answer submission questions, display only three options
                 // Shuffle the options
                 Collections.shuffle(answers);
@@ -256,7 +256,7 @@ public class POOTrivia extends JPanel {
                         add(answerButtons[i]);
                     }
                 }
-            } else if (question instanceof SoccerQ) {
+            } else if (question.questionType().equals("Soccer")) {
                 // For SoccerQ questions, display the correct answer as one of the options
                 Collections.shuffle(answers);
                 
@@ -292,7 +292,7 @@ public class POOTrivia extends JPanel {
             }
     
             // Add True/False buttons for Ski and Swimming questions
-            if (question instanceof SkiQ || question instanceof SwimmingQ) {
+            if (question.questionType().equals("Ski") || question.questionType().equals("Swimming")) {
                 JPanel trueFalsePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
                 trueFalsePanel.add(trueButton);
                 trueFalsePanel.add(falseButton);

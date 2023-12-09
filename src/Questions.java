@@ -11,6 +11,10 @@ public abstract class Questions {
         this.correctAnswer = correctAnswer;
     }
 
+    public String questionType() {
+        return null;
+    }
+
     public String getQuestion() {
         return textQuestion;
     }

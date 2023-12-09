@@ -8,6 +8,11 @@ public class ArtsQ extends Questions {
     }
 
     @Override
+    public String questionType() {
+        return "Arts";
+    }
+
+    @Override
     public String getQuestion() {
         return textQuestion;
     }
